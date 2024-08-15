@@ -8,7 +8,7 @@ gem "bootsnap", require: false
 gem "config"
 gem "importmap-rails"
 gem "jbuilder"
-gem "mysql2", "~> 0.5"
+gem "mysql2"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.5"
 gem "rails-i18n"

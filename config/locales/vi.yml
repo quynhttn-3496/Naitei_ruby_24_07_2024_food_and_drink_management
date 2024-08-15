@@ -27,3 +27,12 @@ vi:
       new_user: "Người dùng mới?"
       sign_up_now: "Đăng kí ngay bây giờ"
       rember_me: "Ghi nhớ mật khẩu cho lần tiếp theo"
+  share: "Chia sẻ"
+  product:
+    image: "Ảnh sản phẩm"
+    price: "Giá: "
+    status: "Tình trạng: "
+    in_stock: "Còn hàng"
+    not_found: "Không tồn tại sản phẩm này"
+  cart:
+    add: " THÊM VÀO GIỎ"

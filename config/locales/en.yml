@@ -26,3 +26,12 @@ en:
       new_user: "New user?"
       sign_up_now: "Sign up now"
       rember_me: "Remember me on this computer"
+  share: "Share"
+  product:
+    image: "Image of product"
+    price: "Price: "
+    status: "Status: "
+    in_stock: "In Stock"
+    not_found: "Not products found"
+  cart:
+    add: "ADD TO CART"
