@@ -4,6 +4,7 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 ruby "3.2.2"
 
 gem "bootsnap", require: false
+gem "config"
 gem "importmap-rails"
 gem "jbuilder"
 gem "mysql2", "~> 0.5"
