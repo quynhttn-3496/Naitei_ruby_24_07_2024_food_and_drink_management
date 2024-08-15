@@ -54,8 +54,17 @@ vi:
     collaborator_program: "Chương trình cộng tác viên"
     search: "Tìm kiếm"
     contact: "Liên hệ"
-  cart: "Giỏ hàng"
   order: "Đơn hàng"
   order_his: "Lịch sử đơn hàng"
   vision: "Chất lượng - tươi ngon"
   avatar: "Cài đặt cá nhân"
+  share: "Chia sẻ"
+  product:
+    image: "Ảnh sản phẩm"
+    price: "Giá: "
+    status: "Tình trạng: "
+    in_stock: "Còn hàng"
+    not_found: "Không tồn tại sản phẩm này"
+  cart:
+    cart: "Giỏ hàng"
+    add: " THÊM VÀO GIỎ"
