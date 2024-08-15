@@ -1,0 +1,5 @@
+@import './color.scss';
+
+body {
+  padding-top: 60px;
+}

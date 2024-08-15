@@ -1,0 +1,29 @@
+vi:
+  helper:
+    title_name: "Healthy Eat"
+  view:
+    layouts:
+      header:
+        home: "Trang chủ"
+        login: "Đăng nhập"
+    users:
+      sign_up: "Đăng kí"
+      create_my_account: "Tạo tài khoản"
+      name: "Tên"
+      email: "Email"
+      password: "Mật khẩu"
+      pass_confirm: "Xác nhận"
+      warning: "Không tìm thấy người dùng"
+      success: "Đăng nhập người dùng thành công"
+    sessions:
+      invalid_email_password_combination: "xác thực lỗi"
+      users: "Người dùng"
+      acount: "Tài khoản"
+      profile: "Trang cá nhân"
+      settings: "Cài đặt"
+      logout: "Đăng xuất"
+      login: "Đăng nhập"
+      password: "Mật khẩu"
+      new_user: "Người dùng mới?"
+      sign_up_now: "Đăng kí ngay bây giờ"
+      rember_me: "Ghi nhớ mật khẩu cho lần tiếp theo"

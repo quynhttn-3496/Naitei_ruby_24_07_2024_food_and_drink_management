@@ -70,6 +70,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.1.1)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -168,6 +169,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.9)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.7)
       actionpack (= 7.0.7)
       activesupport (= 7.0.7)
@@ -233,6 +237,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.7.3-x86_64-linux)
+      railties (>= 7.0.0)
     thor (1.2.2)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -263,6 +269,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (= 3.1.18)
   bootsnap
   capybara
   config
@@ -272,6 +279,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.5)
+  rails-i18n
   rspec-rails (~> 4.0.1)
   rubocop (~> 1.26)
   rubocop-checkstyle_formatter
@@ -279,6 +287,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails
   turbo-rails
   tzinfo-data
   web-console
