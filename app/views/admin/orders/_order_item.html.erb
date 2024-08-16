@@ -1,0 +1,8 @@
+<tr class="border-t">
+  <%= render partial: "user/orders/order_item", locals: {order: order} %>
+  <td class="py-2 px-4">
+    <% if order.confirming? %>
+      <%= button_to t("orders.cancel_button"), admin_order_path(order), :method => :delete , data: {turbo_confirm: t("orders.cancel_confirm")}, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
+    <% end %>
+  </td>
+</tr>
