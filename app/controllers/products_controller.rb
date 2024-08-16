@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.order_by_name
+    @pagy, @products = pagy(Product.all, limit: Settings.page_10)
   end
 
   def show

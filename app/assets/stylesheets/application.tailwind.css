@@ -5,3 +5,15 @@
 #dropdown-menu.active {
   display: block;
 }
+
+.pagy.nav {
+  @apply flex justify-end p-4 space-x-2 mr-20;
+}
+
+.pagy.nav a {
+  @apply block px-4 py-2 text-sm text-blue-600 bg-white border border-gray-300 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200;
+}
+
+.pagy.nav .current {
+  @apply bg-blue-600 text-white border-transparent;
+}

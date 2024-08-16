@@ -1,5 +1,11 @@
-<div>
-  <ul>
-    <%= render @products %>
-  </ul>
+<% provide :title, t("products.title") %>
+<h1 class="text-3xl font-bold mb-4"><%= t "products.title" %></h1>
+<div class="mb-4">
+  <%== pagy_nav(@pagy) %>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <%= render partial: "product", collection: @products, as: :product %>
+</div>
+<div class="mt-4 flex justify-center items-center">
+  <%== pagy_nav(@pagy) %>
 </div>
