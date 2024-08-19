@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_20_070358) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_22_025956) do
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
@@ -59,9 +59,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_20_070358) do
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
     t.integer "quantity"
-    t.decimal "total_amount", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_amount_cents", default: 0, null: false
+    t.string "total_amount_currency", default: "VND", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -72,9 +73,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_20_070358) do
     t.string "reason"
     t.bigint "payment_method_id", null: false
     t.bigint "address_id", null: false
-    t.decimal "total_invoice", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_invoice_cents", default: 0, null: false
+    t.string "total_invoice_currency", default: "VND", null: false
     t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["payment_method_id"], name: "index_orders_on_payment_method_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -97,6 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_20_070358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
+    t.string "currency"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

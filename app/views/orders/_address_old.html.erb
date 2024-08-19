@@ -1,0 +1,23 @@
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md">
+    <h2 class="text-xl font-semibold mb-4">Địa chỉ nhận hàng</h2>
+    <form id="popup-form">
+      <div class="mb-4">
+        <label for="recipient-name" class="block text-sm font-medium text-gray-700">Tên người nhận</label>
+        <input id="recipient-name" name="recipient_name" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+      </div>
+      <div class="mb-4">
+        <label for="address" class="block text-sm font-medium text-gray-700">Địa chỉ</label>
+        <input id="address" name="address" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+      </div>
+      <div class="mb-4">
+        <label for="phone" class="block text-sm font-medium text-gray-700">Số điện thoại</label>
+        <input id="phone" name="phone" type="tel" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+      </div>
+      <div class="flex justify-end gap-4">
+        <button type="button" id="cancel-popup" class="px-4 py-2 bg-gray-500 text-white rounded">Hủy</button>
+        <button type="button" id="save-popup" class="px-4 py-2 bg-blue-500 text-white rounded">Lưu</button>
+      </div>
+    </form>
+  </div>
+</div>

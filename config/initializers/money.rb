@@ -4,7 +4,7 @@ MoneyRails.configure do |config|
 
   # To set the default currency
   #
-  config.default_currency = :usd
+  config.default_currency = :vnd
 
   # Set default bank object
   #
@@ -16,7 +16,7 @@ MoneyRails.configure do |config|
   #
   # Example:
   config.locale_backend = :i18n
-  config.default_currency = :usd
+  config.default_currency = :vnd
   config.add_rate "USD", "VND", 24922
   config.add_rate "VND", "USD", 0.000040
 

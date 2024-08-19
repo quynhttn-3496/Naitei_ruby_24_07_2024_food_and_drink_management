@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :products
 
     resources :cart_items
-    resource :carts, only: %i(show)
-
+    resource :carts
+    resource :orders
   end
 end

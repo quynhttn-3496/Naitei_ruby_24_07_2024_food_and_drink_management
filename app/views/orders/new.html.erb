@@ -1,0 +1,88 @@
+<%= form_for @order, url: orders_path do |f| %>
+  <div class="flex">
+    <div class="address-payment p-12 w-1/2 min-h-screen">
+      <h1 class="text-xl font-semibold mb-4">Thông tin nhận hàng</h1>
+
+      <%= f.fields_for :address do |a| %>
+        <%= a.hidden_field :user_id, value: current_user.id %>
+        <div class="mb-5">
+          <%= a.label :name, t("order.recipient_name"), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+          <%= a.text_field :name, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+        </div>
+        <div class="mb-5">
+          <%= a.label :phone, t("order.phone_number"), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+          <%= a.text_field :phone, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+        </div>
+        <div class="mb-5">
+          <%= a.label :address, t("order.address"), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+          <%= a.text_field :address, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+        </div>
+      <% end %>
+
+      <div class="payment pt-6">
+        <h1 class="text-xl font-semibold mb-4"><%= t "order.payment_info" %></h1>
+        <%= f.fields_for :payment_method do |p| %>
+          <div class="mb-5">
+            <label for="payment_method" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><%= t "order.payment_method" %></label>
+            <%= p.select :payment_method, options_for_select([
+                [t("order.payment_method_choose"), nil],
+                [t("order.credit_card"), "credit_card"],
+                [t("order.paypal"), "paypal"],
+                [t("order.bank_transfer"), "bank_transfer"]
+              ]), {}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="bg-white p-12 rounded-lg shadow-lg w-1/2 cart-items-list">
+      <h1 class="text-xl font-semibold mb-4"><%= t "order.order" %> (<%= @cart_items.count %> <%= t "order.product" %>)</h1>
+      <div class="space-y-4">
+        <% @cart_items.each do |item| %>
+          <%= f.fields_for :order_items do |oi| %>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="<%= item.product.image_url %>" alt="<%= item.product.name %>" class="w-12 h-12 rounded-lg">
+                <div class="px-4">
+                  <p><%= item.product.name %></p>
+                  <%= oi.hidden_field :product_id, value: item.product.id %>
+                  <%= oi.hidden_field :quantity, value: item.quantity %>
+                  <span class="bg-green-700 text-white text-xs rounded-full px-2 py-1"><%= item.quantity %></span>
+                </div>
+              </div>
+              <p class="text-gray-600">
+                <%= convert_currency item.product.price * item.quantity %>
+              </p>
+              <%= oi.hidden_field :total_amount_cent, value: item.product.price * item.quantity %>
+              <%= oi.hidden_field :total_amount_currency, value: I18n.locale == :en ? "USD" : "VND" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <% subtotal = @cart_items.sum { |item| item.product.price * item.quantity } %>
+      <%= f.hidden_field :total_invoice_cents, value: subtotal %>
+      <%= f.hidden_field :total_invoice_currency, value: I18n.locale == :en ? "USD" : "VND" %>
+
+      <div class="mt-4 border-t pt-4">
+        <div class="flex justify-between items-center">
+          <span class="text-lg font-semibold"><%= t "order.total" %></span>
+          <span class="text-lg font-semibold text-red-600">
+            <%= convert_currency subtotal %>
+          </span>
+        </div>
+      </div>
+
+      <div class="flex justify-between mt-6">
+        <%= link_to carts_path, class: "text-green-700 flex items-center space-x-1" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span><%= t "order.back_to_cart" %></span>
+        <% end %>
+        <%= f.submit t("order.place_order"), class: "bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold" %>
+      </div>
+    </div>
+  </div>
+<% end %>
