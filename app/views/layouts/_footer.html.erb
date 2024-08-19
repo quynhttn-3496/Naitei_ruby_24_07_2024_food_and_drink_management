@@ -1,0 +1,59 @@
+<footer class="bg-gray-100 py-6 mt-auto">
+  <div class="container  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    
+    <!-- Logo and Description -->
+    <div class="flex ">
+      <div class="flex items-center">
+        <%= image_tag "logo.png", alt: t("logo.alt"), class: "w-10 h-10" %>
+        <div class="">
+          <h2 class="text-xl font-bold text-green-600"><%= t "brand.name" %></h2>
+          <p class="text-sm text-gray-700"><%= t "brand.tagline" %></p>
+        </div>
+      </div>
+      <p class=" text-sm text-gray-700"><%= t "description" %></p>
+      <p class="text-green-600 font-semibold"><%= t "slogan" %></p>
+      <p class="text-sm text-gray-700"><%= t "contact.address" %></p>
+      <p class="text-sm text-gray-700"><%= t "contact.phone" %></p>
+      <p class="text-sm text-gray-700"><%= t "contact.email" %></p>
+    </div>
+
+    <!-- Policies -->
+    <div class="flex ">
+      <h3 class="text-lg font-bold text-green-600"><%= t "policies.title" %></h3>
+      <ul class="text-sm text-gray-700 space-y-2">
+        <% Settings.policy_array.each do |policy| %>
+          <li><a href="#" class="hover:text-green-600"><%= t "policies.#{policy}" %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- Instructions -->
+    <div class="flex ">
+      <h3 class="text-lg font-bold text-green-600"><%= t "instructions.title" %></h3>
+      <ul class="text-sm text-gray-700 space-y-2">
+        <% Settings.instruct_arr.each do |instruction| %>
+          <li><a href="#" class="hover:text-green-600"><%= t "instructions.#{instruction}" %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="flex  items-start">
+     <!-- Social Media Section -->
+      <h3 class="text-lg font-bold text-green-600"><%= t "connect" %></h3>
+      <div class="flex space-x-1 ">
+        <%= link_to image_tag("facebook.jpeg", alt: "Facebook", class: "w-6 h-6"), Settings.social_link %>
+        <%= link_to image_tag("youtube.png", alt: "YouTube", class: "w-6 h-6"), Settings.social_link %>
+        <%= link_to image_tag("insta.jpeg", alt: "Instagram", class: "w-6 h-6"), Settings.social_link %>
+        <%= link_to image_tag("twitter.png", alt: "Twitter", class: "w-6 h-6"), Settings.social_link %>
+    </div>
+
+    <!-- Payment Methods Section -->
+      <h3 class=" text-lg font-bold text-green-600"><%= t "payment" %></h3>
+      <div class="flex space-x-1 ">
+        <%= image_tag "payment_1.webp", alt: "Payment 1", class: "w-12 h-8" %>
+        <%= image_tag "payment_2.webp", alt: "Payment 2", class: "w-12 h-8" %>
+        <%= image_tag "payment_4.webp", alt: "Payment 4", class: "w-12 h-8" %>
+      </div>
+    </div>
+  </div>
+</footer>
