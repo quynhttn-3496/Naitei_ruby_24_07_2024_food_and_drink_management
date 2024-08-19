@@ -5,7 +5,6 @@
   >
     <td class="py-4 px-4">
       <div class="flex items-center">
-        <img src="<%= cart_item.product.image_url %>" alt="<%= cart_item.product.name %>" class="w-16 h-16 object-cover rounded mr-4">
         <div>
           <p class="font-medium text-sm"><%= cart_item.product.name %></p>
           <%= link_to t("delete.delete"), cart_item, class: "text-red-500 text-xs", data: { "turbo-method": :delete, turbo_confirm: t("delete.delete_confirm") } %>

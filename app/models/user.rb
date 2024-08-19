@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  PERMITTED_ATRIBUTES = %i(username email password password_confirmation).freeze
   enum role: {admin: 0, user: 1}
 
   has_one :cart, dependent: :destroy
@@ -11,7 +12,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   after_create :create_cart
-  PERMITTED_ATRIBUTES = %i(username email password password_confirmation).freeze
+
   validates :username, presence: true,
     length: {maximum: Settings.validate_len_name}
   validates :email, presence: true,

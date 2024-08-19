@@ -35,9 +35,12 @@
           <div class="alert p-4 border-l-4 <%= alert_class %>"><%= message %></div>
         <% end %>
         <div class="flex w-screen">
-          <div class="w-11/12 mx-auto">
-            <%= yield %>
-          </div>
+            <div class="pl-4 h-auto flex">
+              <%= render "layouts/sidebar" %>
+            </div>
+            <div class="w-5/6">
+              <%= yield %>
+            </div>
         </div>
       </div>
     </main>
