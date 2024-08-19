@@ -19,8 +19,7 @@
 
     <div class="flex space-x-4">
       <% if logged_in? %>
-        <% puts logged_in? %>
-        <%= link_to "#", class: "flex items-center space-x-1 text-green-700" do %>
+        <%= link_to carts_path, class: "flex items-center space-x-1 text-green-700" do %>
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h14M9 21h6a2 2 0 002-2v-7H7v7a2 2 0 002 2zM8 6h11M8 6H5l-1-2H3M13 3v4h5l-3 2H8l3-2V3" />
           </svg>
@@ -31,7 +30,7 @@
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 16v5a2 2 0 002 2h4a2 2 0 002-2v-5M16 3h5a2 2 0 012 2v12a2 2 0 01-2 2h-5M8 16v5a2 2 0 002 2h4a2 2 0 002-2v-5M8 3h5a2 2 0 012 2v12a2 2 0 01-2 2h-5M3 3v18a1 1 0 001 1h14a1 1 0 001-1V3" />
           </svg>
-          <span><%= t "order" %></span>
+          <span><%= t "order.order" %></span>
         <% end %>
 
         <%= link_to "#", class: "flex items-center space-x-1 text-green-700" do %>
