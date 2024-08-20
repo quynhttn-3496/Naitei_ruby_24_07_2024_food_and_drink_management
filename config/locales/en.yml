@@ -54,8 +54,17 @@ en:
     collaborator_program: "Collaborator Program"
     search: "Search"
     contact: "Contact"
-  cart: "Cart"
   order: "Order"
   order_his: "Order History"
   vision: "Quality - Fresh"
   avatar: "Personal Settings"
+  share: "Share"
+  product:
+    image: "Image of product"
+    price: "Price: "
+    status: "Status: "
+    in_stock: "In Stock"
+    not_found: "Not products found"
+  cart:
+    cart: "Cart"
+    add: "ADD TO CART"

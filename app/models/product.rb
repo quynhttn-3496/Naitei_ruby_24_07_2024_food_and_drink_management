@@ -4,4 +4,6 @@ class Product < ApplicationRecord
   has_one :cart_item, dependent: :destroy
   has_one :discount, dependent: :destroy
   has_many :reviews, dependent: :destroy, as: :reviewable
+
+  scope :order_by_name, ->{order :name}
 end
