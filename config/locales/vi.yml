@@ -58,6 +58,12 @@ vi:
   order_his: "Lịch sử đơn hàng"
   vision: "Chất lượng - tươi ngon"
   avatar: "Cài đặt cá nhân"
+  products:
+    title: "Danh sách sản phẩm"
+    discount_label: "Giảm giá"
+    add_to_cart: "Thêm vào giỏ"
+    original_price: "Giá gốc"
+    price: "Giá"
   share: "Chia sẻ"
   product:
     image: "Ảnh sản phẩm"

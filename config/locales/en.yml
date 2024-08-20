@@ -68,3 +68,9 @@ en:
   cart:
     cart: "Cart"
     add: "ADD TO CART"
+  products:
+    title: "Product List"
+    discount_label: "Discount"
+    add_to_cart: "Add to Cart"
+    original_price: "Original Price"
+    price: "Price"
