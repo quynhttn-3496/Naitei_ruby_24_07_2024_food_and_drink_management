@@ -10,6 +10,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   attr_accessor :remember_token
 
+  after_create :create_cart
   PERMITTED_ATRIBUTES = %i(username email password password_confirmation).freeze
   validates :username, presence: true,
     length: {maximum: Settings.validate_len_name}
@@ -30,5 +31,9 @@ class User < ApplicationRecord
   private
   def downcase_email
     email.downcase!
+  end
+
+  def create_cart
+    Cart.create!(user: self)
   end
 end

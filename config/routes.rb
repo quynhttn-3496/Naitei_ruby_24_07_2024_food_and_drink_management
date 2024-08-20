@@ -8,5 +8,9 @@ Rails.application.routes.draw do
 
     resources :users
     resources :products
+
+    resources :cart_items
+    resource :carts, only: %i(show)
+
   end
 end

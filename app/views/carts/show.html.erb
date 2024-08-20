@@ -1,0 +1,37 @@
+<div class="container mx-auto p-4">
+  <% if @cart_items.any? %>
+    <table class="min-w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "product.product_information" %></th>
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "product.price" %></th>
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "quantity" %></th>
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "total_money" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render "cart_items" %>
+      </tbody>
+    </table>
+    <div class="flex justify-end py-4">
+      <div class="text-right">
+        <p class="font-medium text-lg"><%= t "cart.total_amount" %>:</p>
+        <p class="text-red-500 font-semibold text-xl">
+          <%= convert_currency @cart_items.sum { |item| item.product.price * item.quantity } %>
+        </p>
+      </div>
+    </div>
+    <div class="relative h-screen">
+      <button class="absolute top-4 right-4 bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold">
+        <%= t "cart.checkout" %>
+      </button>
+    </div>
+  <% else %>
+    <div class="text-center text-gray-700 py-12">
+      <p class="text-lg font-medium"><%= t "cart.no_products" %></p>
+      <p class="text-sm">
+        <%= link_to t("cart.let_shop_now"), products_path, class: "text-blue-600 hover:text-blue-800" %>
+      </p>
+    </div>
+  <% end %>
+</div>

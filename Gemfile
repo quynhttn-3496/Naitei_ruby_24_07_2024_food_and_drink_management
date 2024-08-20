@@ -8,6 +8,7 @@ gem "bootsnap", require: false
 gem "config"
 gem "importmap-rails"
 gem "jbuilder"
+gem "money-rails"
 gem "mysql2", "~> 0.5"
 gem "pagy"
 gem "puma", "~> 5.0"

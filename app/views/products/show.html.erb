@@ -22,30 +22,40 @@
       </li>
     </ul>
   </div>
-
   <div class="description w-1/2 p-4">
     <h1 class="text-2xl font-bold"><%= @product.name %></h1>
     <div class="flex">
       <p class="mr-2"></p><%= t "product.status" %><p><%= t "product.in_stock" %></p>
     </div>
     <div class="flex">
-      <p class="text-2xl font-bold mr-2"><%= t "product.price" %></p><p class="text-red-500 text-2xl"><%= @product.price %>đ</p>
+      <p class="text-2xl font-bold mr-2"><%= t "product.price" %></p><p class="text-red-500 text-2xl">
+        <%= convert_currency @product.price %>
+      </p>
     </div>
-
     <div class="mt-4 p-4 border-l-4 border-green-700 bg-gray-100 text-gray-700 text-sm rounded-r-md">
       <p><%= @product.description %></p>
     </div>
-
     <div class="flex items-center space-x-4 pt-4">
       <div class="flex items-center border rounded-full px-4 py-2">
-        <button class="text-xl">−</button>
-        <span class="mx-4 text-lg">1</span>
-        <button class="text-xl">+</button>
+        <button id="decrement" class="text-xl">−</button>
+        <input id="cart-items-quatity" type="number" class="mx-4 text-lg w-12 text-center" value="1" min="1" readonly>
+        <button id="increment" class="text-xl">+</button>
       </div>
-    
-      <button class="bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold">
-        <%= t "cart.add" %>
-      </button>
+      <% if logged_in? %>
+        <%= form_with url: cart_items_path, method: :post, local: true do %>
+          <%= hidden_field_tag :product_id, @product.id %>
+          <%= hidden_field_tag :quantity %>
+          <button type="submit" class="bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold">
+            <%= t "cart.add" %>
+          </button>
+        <% end %>
+      <% else %>
+        <%= link_to login_path do %>
+          <button class="bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold">
+            <%= t "cart.add" %>
+          </button>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
