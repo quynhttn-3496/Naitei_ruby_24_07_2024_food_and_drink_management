@@ -7,4 +7,6 @@ class Product < ApplicationRecord
 
   monetize :price_cents, with_model_currency: :currency, allow_nil: true
   scope :order_by_name, ->{order :name}
+
+  accepts_nested_attributes_for :category
 end

@@ -2,5 +2,6 @@
 import '@hotwired/turbo-rails'
 import 'controllers'
 import 'custom/products/quantity_control'
+import 'custom/products/new'
 import 'custom/carts/quantity_control'
 import 'custom/menu'

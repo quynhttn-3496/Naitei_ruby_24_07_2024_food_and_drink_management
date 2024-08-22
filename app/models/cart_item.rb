@@ -4,4 +4,6 @@ class CartItem < ApplicationRecord
 
   validates :quantity, presence: true,
              numericality: {greater_than_or_equal_to: 1}
+
+  CART_ITEM_PARAMS = %i(quantity).freeze
 end
