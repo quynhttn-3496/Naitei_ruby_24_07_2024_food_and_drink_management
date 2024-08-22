@@ -1,21 +1,27 @@
 <header class="bg-gray-100 py-2">
   <div class="container mx-auto flex items-center justify-between">
     <div class="flex items-center">
-      <%= image_tag "logo.png", alt: "Bean Farm Logo", class: "h-10" %>
+        <%= link_to products_path do %>
+          <%= image_tag "logo.png", alt: t("logo.alt"), class: "w-10 h-10" %>
+        <% end %>  
       <div class="ml-2">
         <span class="text-green-700 font-bold text-xl">Healthy Eat</span>
         <span class="block text-xs text-black"><%= t "vision" %></span>
       </div>
     </div>
 
-    <div class="relative flex items-center">
-      <input type="text" placeholder="Tìm kiếm đồ yêu thích..." class="w-full py-2 px-4 rounded-full bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-600">
-      <button class="absolute right-2">
+  <%= form_for :search, url: products_path, method: :get, html: { class: "relative flex items-center" } do |f| %>
+    <%= f.hidden_field :category_id, value: params[:search][:category_id] %>
+    <%= f.hidden_field :price_min, value: params[:search][:price_min] %>
+    <%= f.hidden_field :price_max, value: params[:search][:price_max] %>
+
+    <%= f.search_field :query, placeholder: t("search.placeholder"), class: "w-full py-2 px-4 rounded-full bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-600", value: params.dig(:search, :query) %>
+      <button type="submit" class="absolute right-2">
         <svg class="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
         </svg>
       </button>
-    </div>
+  <% end %>
 
     <div class="flex space-x-4">
       <% if logged_in? %>

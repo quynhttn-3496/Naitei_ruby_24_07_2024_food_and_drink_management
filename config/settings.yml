@@ -8,3 +8,4 @@ policy_array: ["member_policy", "payment_policy", "product_return_policy", "priv
 instruct_arr: ["purchase_guide", "return_guide", "payment_guide", "collaborator_program", "search", "contact"]
 social_link: "https://www.facebook.com/linhdinhlhpk97"
 page_10: 10
+exchange_rate_24: 24_000
