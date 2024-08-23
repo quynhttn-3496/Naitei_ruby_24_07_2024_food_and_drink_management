@@ -17,14 +17,16 @@
     </td>
     <td class="py-4 px-4">
       <div class="flex items-center px-4 py-2">
-        <button class="decrement-cart-item text-xl px-3 py-1 bg-gray-200 rounded">-</button>
+        <button class="decrement-cart-item text-xl px-3 py-1 bg-gray-200 rounded" 
+                data-url="<%= cart_item_path(cart_item) %>" data-method="patch">-</button>
         <span class="cart-items-quatity mx-2 text-lg w-12 text-center border border-gray-300 rounded px-2 py-1 bg-gray-100">
           <%= cart_item.quantity %>
         </span>            
-        <button class="increment-cart-item text-xl px-3 py-1 bg-gray-200 rounded">+</button>
+        <button class="increment-cart-item text-xl px-3 py-1 bg-gray-200 rounded"
+                data-url="<%= cart_item_path(cart_item) %>" data-method="patch">+</button>
       </div>
     </td>
-    <td class="py-4 px-4 text-red-500 font-semibold text-sm">
+    <td id="total-money-of-one-product" class="py-4 px-4 text-red-500 font-semibold text-sm">
       <%= convert_currency cart_item.product.price * cart_item.quantity %>
     </td>
   </tr>

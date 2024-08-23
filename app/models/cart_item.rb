@@ -6,4 +6,6 @@ class CartItem < ApplicationRecord
              numericality: {greater_than_or_equal_to: 1}
 
   scope :by_product, ->(product_id){where(product_id:)}
+
+  CART_ITEM_PARAMS = %i(quantity).freeze
 end
