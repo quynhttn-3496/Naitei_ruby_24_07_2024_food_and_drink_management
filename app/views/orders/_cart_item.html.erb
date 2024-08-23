@@ -1,0 +1,18 @@
+<%= f.fields_for :order_items, item do |oi| %>
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <img src="<%= item.product.image_url %>" alt="<%= item.product.name %>" class="w-12 h-12 rounded-lg">
+      <div class="px-4">
+        <p><%= item.product.name %></p>
+        <%= oi.hidden_field :product_id, value: item.product.id %>
+        <%= oi.hidden_field :quantity, value: item.quantity %>
+        <span class="bg-green-700 text-white text-xs rounded-full px-2 py-1"><%= item.quantity %></span>
+      </div>
+    </div>
+    <p class="text-gray-600">
+      <%= convert_currency item.product.price * item.quantity %>
+    </p>
+    <%= oi.hidden_field :total_amount_cent, value: item.product.price * item.quantity %>
+    <%= oi.hidden_field :total_amount_currency, value: I18n.locale == :en ? "USD" : "VND" %>
+  </div>
+<% end %>

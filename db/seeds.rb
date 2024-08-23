@@ -27,7 +27,7 @@ end
   category = Category.order("RAND()").first
   Product.create!(
     name: "Product #{i + 1}",
-    price: Money.new(rand(100000..1000000), "USD"),
+    price: Money.new(rand(100000..1000000), "VND"),
     delivery_quantity: rand(1..10),
     image_url: "http://example.com/product_#{i + 1}.jpg",
     description: "Description for product #{i + 1}",

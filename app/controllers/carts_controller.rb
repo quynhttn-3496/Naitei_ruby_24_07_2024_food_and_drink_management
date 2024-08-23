@@ -1,8 +1,16 @@
 class CartsController < ApplicationController
+  def index; end
+
   def show
-    if current_user.present?
+    if current_user
       @cart = current_user.cart
-      @cart_items = @cart.cart_items.includes(:product)
+      if @cart
+        @cart_items = @cart.cart_items.includes(:product)
+      else
+        @cart_items = []
+        flash[:alert] = t("cart.empty")
+        redirect_to products_path
+      end
     else
       redirect_to login_path
     end

@@ -17,13 +17,13 @@
       <div class="text-right">
         <p class="font-medium text-lg"><%= t "cart.total_amount" %>:</p>
         <p class="text-red-500 font-semibold text-xl">
-          <%= convert_currency @cart_items.sum { |item| item.product.price * item.quantity } %>
+          <%= convert_currency total_cart_amount(@cart_items) %>
         </p>
       </div>
     </div>
     <div class="relative h-screen">
       <button class="absolute top-4 right-4 bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold">
-        <%= t "cart.checkout" %>
+        <%= link_to t("cart.checkout"), new_orders_path %>
       </button>
     </div>
   <% else %>
