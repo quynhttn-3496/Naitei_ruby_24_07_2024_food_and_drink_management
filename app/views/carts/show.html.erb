@@ -1,0 +1,62 @@
+<div class="container mx-auto p-4">
+  <% if @cart_items.any? %>
+    <table class="min-w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "product.product_information" %></th>
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "product.price" %></th>
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "quantity" %></th>
+          <th class="py-2 px-4 text-left text-sm font-medium text-gray-700"><%= t "total_money" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr class="border-b min-h-12 py-3">
+            <td class="py-4 px-4">
+              <div class="flex items-center">
+                <img src="<%= cart_item.product.image_url %>" alt="<%= cart_item.product.name %>" class="w-16 h-16 object-cover rounded mr-4">
+                <div>
+                  <p class="font-medium text-sm"><%= cart_item.product.name %></p>
+                  <%= link_to t("delete.delete"), cart_item, class: "text-red-500 text-xs", data: { "turbo-method": :delete, turbo_confirm: t("delete.delete_confirm") } %>
+                </div>
+              </div>
+            </td>
+            <td class="py-4 px-4 text-red-500 font-semibold text-sm"><%= convert_currency @cart_items.sum { |item| item.product.price * item.quantity } %></td>
+            <td class="py-4 px-4">
+              <div class="flex items-center px-4 py-2">
+                <button id="decrement-cart-item" class="text-xl px-3 py-1 bg-gray-200 rounded">−</button>
+                <span id="cart-items-quatity-in-cart" class="mx-2 text-lg w-12 text-center border border-gray-300 rounded px-2 py-1 bg-gray-100">
+                  <%= cart_item.quantity %>
+                </span>            
+                <button id="increment-cart-item" class="text-xl px-3 py-1 bg-gray-200 rounded">+</button>
+              </div>
+            </td>
+            <td class="py-4 px-4 text-red-500 font-semibold text-sm">
+              <%= convert_currency cart_item.product.price * cart_item.quantity %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="flex justify-end py-4">
+      <div class="text-right">
+        <p class="font-medium text-lg"><%= t "cart.total_amount" %>:</p>
+        <p class="text-red-500 font-semibold text-xl">
+          <%= convert_currency @cart_items.sum { |item| item.product.price * item.quantity } %>
+        </p>
+      </div>
+    </div>
+    <div class="relative h-screen">
+      <button class="absolute top-4 right-4 bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold">
+        <%= link_to t("cart.checkout"), new_orders_path %>
+      </button>
+    </div>
+  <% else %>
+    <div class="text-center text-gray-700 py-12">
+      <p class="text-lg font-medium"><%= t "cart.no_products" %></p>
+      <p class="text-sm">
+        <%= link_to t("cart.let_shop_now"), products_path, class: "text-blue-600 hover:text-blue-800" %>
+      </p>
+    </div>
+  <% end %>
+</div>

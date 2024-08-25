@@ -12,7 +12,6 @@ end
     password: "password",
     role: 0
   )
-  # Tạo giỏ hàng cho người dùng admin
   user.create_cart!
 end
 
@@ -23,7 +22,6 @@ end
     password: "password",
     role: 1
   )
-  # Tạo giỏ hàng cho người dùng bình thường
   user.create_cart!
 end
 
@@ -32,7 +30,7 @@ end
   category = Category.order("RAND()").first
   Product.create!(
     name: "Product #{i + 1}",
-    price: rand(10..100),
+    price: Money.new(rand(100000..1000000), "USD"),
     delivery_quantity: rand(1..10),
     image_url: "http://example.com/product_#{i + 1}.jpg",
     description: "Description for product #{i + 1}",

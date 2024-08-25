@@ -28,6 +28,10 @@ class User < ApplicationRecord
     BCrypt::Password.create string, cost:
   end
 
+  def create_cart
+    Cart.create!(user: self)
+  end
+
   private
   def downcase_email
     email.downcase!
