@@ -80,6 +80,7 @@ en:
     let_shop_now: "Start shopping now!"
     total_amount: "Total Amount"
     checkout: "Checkout"
+    item_not_found: "There is no such product in the cart."
   products:
     title: "Product List"
     discount_label: "Discount"

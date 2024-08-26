@@ -92,6 +92,7 @@ vi:
     let_shop_now: "Hãy bắt đầu mua sắm ngay bây giờ!"
     total_amount: "Tổng số tiền"
     checkout: "Thanh toán"
+    item_not_found: "Không có sản phẩm này trong giỏ hàng"
   users:
     checkout: "Thanh toán"
     empty: "Giỏ hàng không có sản phẩm"
