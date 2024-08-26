@@ -10,7 +10,32 @@
         </tr>
       </thead>
       <tbody>
-        <%= render "cart_items" %>
+        <% @cart_items.each do |cart_item| %>
+          <tr class="border-b min-h-12 py-3">
+            <td class="py-4 px-4">
+              <div class="flex items-center">
+                <img src="<%= cart_item.product.image_url %>" alt="<%= cart_item.product.name %>" class="w-16 h-16 object-cover rounded mr-4">
+                <div>
+                  <p class="font-medium text-sm"><%= cart_item.product.name %></p>
+                  <%= link_to t("delete.delete"), cart_item, class: "text-red-500 text-xs", data: { "turbo-method": :delete, turbo_confirm: t("delete.delete_confirm") } %>
+                </div>
+              </div>
+            </td>
+            <td class="py-4 px-4 text-red-500 font-semibold text-sm"><%= convert_currency @cart_items.sum { |item| item.product.price * item.quantity } %></td>
+            <td class="py-4 px-4">
+              <div class="flex items-center px-4 py-2">
+                <button id="decrement-cart-item" class="text-xl px-3 py-1 bg-gray-200 rounded">−</button>
+                <span id="cart-items-quatity-in-cart" class="mx-2 text-lg w-12 text-center border border-gray-300 rounded px-2 py-1 bg-gray-100">
+                  <%= cart_item.quantity %>
+                </span>            
+                <button id="increment-cart-item" class="text-xl px-3 py-1 bg-gray-200 rounded">+</button>
+              </div>
+            </td>
+            <td class="py-4 px-4 text-red-500 font-semibold text-sm">
+              <%= convert_currency cart_item.product.price * cart_item.quantity %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     <div class="flex justify-end py-4">

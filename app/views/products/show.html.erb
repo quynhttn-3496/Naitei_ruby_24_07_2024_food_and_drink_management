@@ -1,10 +1,12 @@
 <div class="product-detail flex w-full mx-auto px-28 min-h-screen items-center">
   <div class="flex-col w-1/2 p-4">
     <div class="image-product">
-      <img src="<%= @product.image_url %>" alt= "<%= t "product.image" %>" class="w-full h-60 rounded-lg shadow-lg">
+      <img src="<%= @product.image_url %>" alt="<%= t "product.image" %>" class="w-full h-60 rounded-lg shadow-lg">
     </div>
     <ul class="share flex space-x-4 mt-4 mx-auto justify-center items-center">
-      <li class="text-gray-800 font-medium"><%= t "share" %></li>
+      <li class="text-gray-800 font-medium">
+        <%= t "share" %>
+      </li>
       <li class="size-8">
         <%= link_to "#" do %>
           <%= image_tag "facebook.png", alt: "Facebook" %>
@@ -22,15 +24,18 @@
       </li>
     </ul>
   </div>
+
   <div class="description w-1/2 p-4">
-    <h1 class="text-2xl font-bold"><%= @product.name %></h1>
+    <h1 class="text-2xl font-bold">
+      <%= @product.name %>
+    </h1>
     <div class="flex">
-      <p class="mr-2"></p><%= t "product.status" %><p><%= t "product.in_stock" %></p>
+      <p class="mr-2"><%= t "product.status" %>:</p>
+      <p><%= t "product.in_stock" %></p>
     </div>
     <div class="flex">
-      <p class="text-2xl font-bold mr-2"><%= t "product.price" %></p><p class="text-red-500 text-2xl">
-        <%= convert_currency @product.price %>
-      </p>
+      <p class="text-2xl font-bold mr-2"><%= t "product.price" %>:</p>
+      <p class="text-red-500 text-2xl"><%= convert_currency @product.price %></p>
     </div>
     <div class="mt-4 p-4 border-l-4 border-green-700 bg-gray-100 text-gray-700 text-sm rounded-r-md">
       <p><%= @product.description %></p>
@@ -38,13 +43,13 @@
     <div class="flex items-center space-x-4 pt-4">
       <div class="flex items-center border rounded-full px-4 py-2">
         <button id="decrement" class="text-xl">−</button>
-        <input id="cart-items-quatity" type="number" class="mx-4 text-lg w-12 text-center" value="1" min="1" readonly>
+        <input id="cart-items-quantity" type="number" class="mx-4 text-lg w-12 text-center" value="1" min="1" readonly>
         <button id="increment" class="text-xl">+</button>
       </div>
       <% if logged_in? %>
         <%= form_with url: cart_items_path, method: :post, local: true do %>
           <%= hidden_field_tag :product_id, @product.id %>
-          <%= hidden_field_tag :quantity %>
+          <%= hidden_field_tag :quantity, 1, id: "hidden-quantity" %>
           <button type="submit" class="bg-green-700 hover:bg-orange-400 text-white py-2 px-6 rounded-full text-sm font-semibold">
             <%= t "cart.add" %>
           </button>
@@ -58,4 +63,47 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<!-- Reviews Section -->
+<div class="reviews-section mt-10 w-full mx-auto px-28">
+  <% if @product.reviews.any? %>
+    <div class="reviews-list">
+      <% @product.reviews.each do |review| %>
+        <div class="review-item border-b pb-4 mb-4">
+          <p class="text-sm text-gray-600"><%= t("reviews.rating") %>: <%= t("reviews.#{review.rating}") %> / 5</p>
+          <p class="mt-2"><%= review.comment %></p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-gray-500"><%= t("reviews.no_reviews") %></p>
+  <% end %>
+
+  <% if logged_in? %>
+    <div class="new-review-form mt-6">
+      <h3 class="text-lg font-semibold mb-4"><%= t("reviews.new") %></h3>
+      <%= form_with model: [@product, @product.reviews.build], local: true do |f| %>
+        <%= f.hidden_field :reviewable_type, value: "Product" %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+
+        <div class="field mb-4">
+          <%= f.label :rating, t("reviews.rating"), class: "block mb-2 text-sm font-medium" %>
+          <%= f.select :rating, options_for_select(Review.ratings.keys.map { |key| [t("reviews.#{key}"), key] }), {}, class: "border rounded w-full p-2" %>
+        </div>
+
+        <div class="field mb-4">
+          <%= f.label :comment, t("reviews.comment"), class: "block mb-2 text-sm font-medium" %>
+          <%= f.text_area :comment, required: true, class: "border rounded w-full p-2" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t("reviews.submit"), class: "bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5" %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-gray-500 mt-4"><%= t("reviews.login_to_review") %></p>
+  <% end %>
 </div>

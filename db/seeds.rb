@@ -1,8 +1,10 @@
+# Tạo các danh mục
 categories = ["com", "tra sua", "tra da", "my", "pho"]
 categories.each do |category_name|
   Category.create(name: category_name)
 end
 
+# Tạo admin và user, kèm theo giỏ hàng cho mỗi người dùng
 2.times do |i|
   user = User.create!(
     email: "admin#{i + 1}@example.com",
@@ -23,6 +25,7 @@ end
   user.create_cart!
 end
 
+# Tạo các sản phẩm
 50.times do |i|
   category = Category.order("RAND()").first
   Product.create!(

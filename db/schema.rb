@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_22_082602) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_25_034630) do
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
@@ -111,7 +111,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_082602) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reviewable_type", null: false
+    t.bigint "reviewable_id", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 

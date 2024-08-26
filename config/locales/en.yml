@@ -26,7 +26,17 @@ en:
       password: "Password"
       new_user: "New user?"
       sign_up_now: "Sign up now"
-      remember_me: "Remember me on this computer"
+      rember_me: "Remember me on this computer"
+  share: "Share"
+  product:
+    image: "Image of product"
+    price: "Price: "
+    status: "Status: "
+    in_stock: "In Stock"
+    not_found: "Not products found"
+  cart:
+    add: "ADD TO CART"
+    remember_me: "Remember me on this computer"
   logo:
     alt: "Healthy Eat"
   brand:
@@ -115,3 +125,5 @@ en:
     credit_card: "Credit Card"
     paypal: "PayPal"
     bank_transfer: "Bank Transfer"
+  reviews:
+    no_reviews: "No reviews"

@@ -26,7 +26,17 @@ vi:
       password: "Mật khẩu"
       new_user: "Người dùng mới?"
       sign_up_now: "Đăng kí ngay bây giờ"
-      remember_me: "Ghi nhớ mật khẩu cho lần tiếp theo"
+      rember_me: "Ghi nhớ mật khẩu cho lần tiếp theo"
+  share: "Chia sẻ"
+  product:
+    image: "Ảnh sản phẩm"
+    price: "Giá: "
+    status: "Tình trạng: "
+    in_stock: "Còn hàng"
+    not_found: "Không tồn tại sản phẩm này"
+  cart:
+    add: " THÊM VÀO GIỎ"
+    remember_me: "Ghi nhớ mật khẩu cho lần tiếp theo"
   logo:
     alt: "Healthy Eat"
   brand:
@@ -116,4 +126,5 @@ vi:
     credit_card: "Thẻ tín dụng"
     paypal: "PayPal"
     bank_transfer: "Chuyển khoản ngân hàng"
-
+  reviews:
+    no_reviews: "Không có nhận xét"

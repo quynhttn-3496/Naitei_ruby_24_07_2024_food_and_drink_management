@@ -17,4 +17,10 @@ module SessionsHelper
     reset_session
     @current_user = nil
   end
+
+  def is_admin?
+    return if current_user.blank?
+
+    current_user.role == "admin"
+  end
 end
