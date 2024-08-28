@@ -2,7 +2,7 @@
   <img class="w-20 h-28 object-cover" src="<%= product.image_url %>" alt="<%= product.name %>">
   <div class="p-4">
     <div class="flex justify-between items-center">
-      <span class="bg-red-500 text-white text-xs px-2 py-1 rounded"><%= product.discount %>%</span>
+      <span class="bg-red-500 text-white text-xs px-2 py-1 rounded"><%= product.discount.discount_rate %>%</span>
       <span class="line-through text-gray-500 text-sm">
         <%= t "products.original_price" %>: 
         <%= convert_currency product.price %>
@@ -11,7 +11,7 @@
     <%=link_to product.name, product_path(product), class: "text-xl font-bold mt-2"  %>
     <p class="text-green-600 text-lg mt-2">
       <%= t "products.price"  %>: 
-      <%= convert_currency calculate_discounted_price(product.price, product.discount.to_f) %>
+      <%= convert_currency calculate_discounted_price(product.price, product.discount.discount_rate) %>
     </p>
     <%= form_with url: cart_items_path, method: :post, local: true do %>
       <%= hidden_field_tag :product_id, product.id %>

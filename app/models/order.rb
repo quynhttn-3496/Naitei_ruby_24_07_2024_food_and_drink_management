@@ -6,7 +6,6 @@ class Order < ApplicationRecord
   belongs_to :address
 
   enum status: {failed: 0, succeeded: 1, confirming: 2}
-  before_save :check_reason
 
   accepts_nested_attributes_for :address, :payment_method, :order_items
 
