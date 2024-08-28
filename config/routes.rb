@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
-    root "homes#index"
+    scope module: "user" do
+      resources :orders, only: [:index] 
+    end    
+    namespace :admin do
+      resources :orders, only: [:index, :destroy] 
+    end
+
+    root "products#index"
     
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
@@ -11,6 +18,5 @@ Rails.application.routes.draw do
 
     resources :cart_items
     resource :carts
-    resource :orders
   end
 end

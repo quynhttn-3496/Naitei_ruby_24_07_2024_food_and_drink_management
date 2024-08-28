@@ -1,0 +1,38 @@
+<div class="bg-gray-50 shadow-lg rounded-lg p-6 mb-8">
+  <h1 class="text-3xl font-extrabold text-green-600 mb-6"><%= t "orders.title" %></h1>
+
+  <nav class="mb-6">
+    <% if current_user.admin? %>
+      <ul class="flex space-x-8">
+        <li>
+          <%= link_to t("orders.all"), orders_path, class: "bg-gray-200 text-gray-800 hover:bg-green-600 hover:text-white font-semibold py-2 px-4 rounded transition-colors duration-200" %>
+        </li>
+        <li>
+          <%= link_to t("orders.failed"), failed_orders_path, class: "bg-red-200 text-red-800 hover:bg-red-600 hover:text-white font-semibold py-2 px-4 rounded transition-colors duration-200" %>
+        </li>
+        <li>
+          <%= link_to t("orders.succeeded"), succeeded_orders_path, class: "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white font-semibold py-2 px-4 rounded transition-colors duration-200" %>
+        </li>
+        <li>
+          <%= link_to t("orders.confirming"), confirming_orders_path, class: "bg-yellow-200 text-yellow-800 hover:bg-yellow-600 hover:text-white font-semibold py-2 px-4 rounded transition-colors duration-200" %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="space-y-4">
+        <li>
+          <%= link_to t("orders.failed"), failed_orders_path, class: "bg-red-200 text-red-800 hover:bg-red-600 hover:text-white font-semibold py-2 px-4 rounded block transition-colors duration-200" %>
+        </li>
+        <li>
+          <%= link_to t("orders.succeeded"), succeeded_orders_path, class: "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white font-semibold py-2 px-4 rounded block transition-colors duration-200" %>
+        </li>
+        <li>
+          <%= link_to t("orders.confirming"), confirming_orders_path, class: "bg-yellow-200 text-yellow-800 hover:bg-yellow-600 hover:text-white font-semibold py-2 px-4 rounded block transition-colors duration-200" %>
+        </li>
+      </ul>
+    <% end %>
+  </nav>
+
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <%= render partial: "orders_table", locals: { orders: @orders } %>
+  </div>
+</div>
