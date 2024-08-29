@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include Pagy::Backend
 
+  layout :set_layout
+
   def set_order
     @order = Order.find_by id: params[:id]
     return if @order
@@ -25,5 +27,9 @@ class ApplicationController < ActionController::Base
     return if current_user.admin?
 
     redirect_to root_path, alert: t("not_admin")
+  end
+
+  def set_layout
+    current_user&.admin? ? "admin_layouts" : "application"
   end
 end

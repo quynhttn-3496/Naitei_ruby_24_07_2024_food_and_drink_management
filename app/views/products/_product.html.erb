@@ -1,5 +1,9 @@
 <div class="bg-white shadow-md rounded-lg overflow-hidden">
-  <img class="w-20 h-28 object-cover" src="<%= product.image_url %>" alt="<%= product.name %>">
+  <% product.images.each do |image| %>
+    <div class="w-full bg-gray-100 flex justify-center items-center">
+      <%= image_tag image, class: "w-full h-auto rounded-lg" %>
+    </div>
+  <% end %>
   <div class="p-4">
     <div class="flex justify-between items-center">
       <span class="bg-red-500 text-white text-xs px-2 py-1 rounded"><%= product.discount %>%</span>

@@ -18,4 +18,8 @@ module ApplicationHelper
     discounted_amount = original_price * (discount_percentage / 100.0)
     original_price - discounted_amount
   end
+
+  def currency_options
+    [%w(VND VND), %w(USD USD)]
+  end
 end

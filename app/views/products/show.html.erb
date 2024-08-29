@@ -1,7 +1,11 @@
 <div class="product-detail flex w-full mx-auto px-28 min-h-screen items-center">
   <div class="flex-col w-1/2 p-4">
     <div class="image-product">
-      <img src="<%= @product.image_url %>" alt= "<%= t "product.image" %>" class="w-full h-60 rounded-lg shadow-lg">
+      <% @product.images.each do |image| %>
+        <div class="w-full bg-gray-100 flex justify-center items-center">
+          <%= image_tag image, class: "w-full h-auto rounded-lg" %>
+        </div>
+      <% end %>
     </div>
     <ul class="share flex space-x-4 mt-4 mx-auto justify-center items-center">
       <li class="text-gray-800 font-medium"><%= t "share" %></li>
