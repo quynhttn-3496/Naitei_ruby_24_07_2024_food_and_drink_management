@@ -53,6 +53,9 @@ class OrdersController < ApplicationController
         product = order_item.product
         product.quantity_in_stock -= order_item.quantity
         product.save!
+
+        current_user.cart.cart_items.by_product(order_item.product_id)
+                    .destroy_all
       end
     end
   end

@@ -6,7 +6,9 @@
     <td class="py-4 px-4">
       <div class="flex items-center">
         <div>
-          <p class="font-medium text-sm"><%= cart_item.product.name %></p>
+          <%= link_to product_path(cart_item.product) do %>
+            <p class="font-medium text-sm"><%= cart_item.product.name %></p>
+          <% end %>
           <%= link_to t("delete.delete"), cart_item, class: "text-red-500 text-xs", data: { "turbo-method": :delete, turbo_confirm: t("delete.delete_confirm") } %>
         </div>
       </div>
@@ -27,6 +29,9 @@
     </td>
     <td id="total-money-of-one-product" class="py-4 px-4 text-red-500 font-semibold text-sm">
       <%= convert_currency cart_item.product.price * cart_item.quantity %>
+    </td>
+    <td class="quantity-in-stock hidden" >
+      <%= cart_item.product.quantity_in_stock %>
     </td>
   </tr>
 <% end %>

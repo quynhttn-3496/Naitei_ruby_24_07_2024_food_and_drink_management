@@ -22,8 +22,17 @@ document.addEventListener('turbo:load', () => {
       const quantitySpan = row.querySelector('.cart-items-quatity');
       let quantity = parseInt(quantitySpan.textContent);
 
-      quantity += 1;
-      quantitySpan.textContent = quantity;
+      const quantityInStockText = row.querySelector('.quantity-in-stock')
+      const quantityInStock = parseFloat(quantityInStockText.textContent)
+
+      if(quantityInStock <= quantity){
+        quantity = quantityInStock
+      }
+      else{
+        quantity += 1;
+        quantitySpan.textContent = quantity;
+      }
+      
       updateCartItem(button.dataset.url, quantity);
     });
   });

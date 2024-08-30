@@ -65,8 +65,12 @@ class CartItemsController < ApplicationController
   end
 
   def update_existing_cart_item
-    @cart_item.quantity += params[*CartItem::CART_ITEM_PARAMS].to_i
-    @cart_item.save
+    requested_quantity = @cart_item.quantity +
+                         params[*CartItem::CART_ITEM_PARAMS].to_i
+    if requested_quantity <= @cart_item.product.quantity_in_stock
+      @cart_item.quantity += params[*CartItem::CART_ITEM_PARAMS].to_i
+      @cart_item.save
+    end
     flash[:info] = t "cart.updated"
   end
 end
