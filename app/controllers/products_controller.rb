@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.order_by_name
-    @pagy, @products = pagy(Product.all, limit: Settings.page_10)
+    apply_filters
+    paginate_products
   end
 
   def show
@@ -12,7 +12,19 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
-  def new; end
+  private
 
-  def create; end
+  def apply_filters
+    @products = @products.oder_by_name.global_search(params.dig(:search,
+                                                                :query))
+                         .min_price(params.dig(:search, :price_min).to_d)
+                         .max_price(params.dig(:search, :price_max).to_d)
+                         .filter_by_category_id(
+                           params.dig(:search, :category_id)
+                         )
+  end
+
+  def paginate_products
+    @pagy, @products = pagy(@products, limit: Settings.page_10)
+  end
 end
