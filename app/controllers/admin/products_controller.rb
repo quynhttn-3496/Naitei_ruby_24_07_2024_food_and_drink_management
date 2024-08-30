@@ -15,10 +15,10 @@ class Admin::ProductsController < ApplicationController
 
     if @product.save
       flash[:success] = t "product.create_success"
+      redirect_to admin_products_path
     else
-      flash[:error] = t "product.create_fail"
+      respond_to(&:turbo_stream)
     end
-    redirect_to admin_products_path
   end
 
   def edit; end

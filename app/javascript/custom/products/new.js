@@ -1,7 +1,6 @@
 document.addEventListener('turbo:load', function() {
   const createButton = document.getElementById('product-new');
   const closeButton = document.getElementById('close-new-product-modal');
-  const cancelButton = document.getElementById('cancel-new-product-modal');
   const modalProduct = document.getElementById('product-modal');
 
   createButton.addEventListener('click', function() {
@@ -10,9 +9,6 @@ document.addEventListener('turbo:load', function() {
 
   closeButton.addEventListener('click', function() {
     modalProduct.classList.add('hidden');
-  });
-
-  cancelButton.addEventListener('click', function() {
-    modalProduct.classList.add('hidden');
+    window.location.reload();
   });
 });

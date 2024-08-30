@@ -38,4 +38,7 @@ class Product < ApplicationRecord
       price
     end
   end
+
+  validates :name, :price_cents, :currency, :quantity_in_stock, :category_id,
+            :images, presence: true
 end

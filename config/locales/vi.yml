@@ -121,7 +121,6 @@ vi:
     empty: "Giỏ hàng không có sản phẩm"
     created_success: "Người dùng đã được tạo thành công."
     create_failed: "Có lỗi xảy ra khi tạo người dùng."
-  errors: "Có lỗi xảy ra "
   order:
     order: "Đơn hàng"
     success: "Đặt hàng thành công"
@@ -161,3 +160,17 @@ vi:
   not_signed: "bạn cần đăng nhập"
   search:
     placeholder: "Tìm kiếm đồ ăn yêu thích"
+  edit: "Sửa"
+  update: "Cập nhật"
+  sidebar:
+    dashboard: "Bảng điều khiển"
+    category: "Danh mục"
+    users: "Người dùng"
+    discount: "Giảm giá"
+    order: "Đơn hàng"
+  authen:
+    admin: "Bạn không có quyền truy cập trang này."
+  errors:
+    errors: "Có lỗi xảy ra"
+    error: "lỗi"
+    the_form_contains: "Form bao gồm"
