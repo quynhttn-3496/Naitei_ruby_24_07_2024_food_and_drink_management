@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /en|vi/ do
-    scope module: "user" do
-      resources :orders, only: [:index] 
-    end    
+  scope "(:locale)", locale: /en|vi/ do   
     namespace :admin do
-      resources :orders, only: [:index, :destroy] 
+      resources :orders, only: %i(index update)
+      resources :products
     end
 
     root "products#index"
@@ -15,13 +13,8 @@ Rails.application.routes.draw do
 
     resources :users
     resources :products
-
     resources :cart_items
     resource :carts
-    resource :orders
-
-    namespace :admin do
-      resources :products
-    end
+    resources :orders
   end
 end

@@ -1,8 +1,8 @@
 <tr class="border-t">
-  <%= render partial: "user/orders/order_item", locals: {order: order} %>
+  <%= render partial: "shared/order_item", locals: { order: order, show_tr: false } %>
   <td class="py-2 px-4">
-    <% if order.confirming? %>
-      <%= button_to t("orders.cancel_button"), admin_order_path(order), :method => :delete , data: {turbo_confirm: t("orders.cancel_confirm")}, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
+    <% if order.confirming?%>
+      <%= button_to t("orders.acept_button"), admin_order_path(id: order.id, type: "accept"), :method => :patch , data: {turbo_confirm: t("orders.acept_confirm")}, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
     <% end %>
   </td>
 </tr>

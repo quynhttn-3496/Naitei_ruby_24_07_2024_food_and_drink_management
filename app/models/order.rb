@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  ORDER_PARAMS = [:total_invoice_cents, :total_invoice_currency,
+  ORDER_PARAMS = [:total_invoice_cents, :total_invoice_currency, :reason,
                   {address_attributes: [:user_id, :name, :address, :phone],
                    payment_method_attributes: [:payment_method],
                    order_items_attributes: [:product_id, :quantity,
@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   belongs_to :payment_method
   belongs_to :address
 
-  enum status: {failed: 0, succeeded: 1, confirming: 2}
+  enum status: {failed: 0, succeeded: 1, confirming: 2, rejected: 3}
 
   accepts_nested_attributes_for :address, :payment_method, :order_items
   monetize :total_invoice_cents, with_model_currency: :currency, allow_nil: true
