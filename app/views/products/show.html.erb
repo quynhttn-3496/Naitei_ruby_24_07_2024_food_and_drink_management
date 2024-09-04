@@ -29,7 +29,11 @@
   <div class="description w-1/2 p-4">
     <h1 class="text-2xl font-bold"><%= @product.name %></h1>
     <div class="flex">
-      <p class="mr-2"></p><%= t "product.status" %><p><%= t "product.in_stock" %></p>
+      <p class="mr-2"></p><%= t "product.in_stock" %></p>
+      <p>:</p>
+      <p id="quantity_in_stock">
+        <%= @product.quantity_in_stock %>
+      </p>
     </div>
     <div class="flex">
       <p class="text-2xl font-bold mr-2"><%= t "product.price" %></p><p class="text-red-500 text-2xl">
@@ -42,7 +46,7 @@
     <div class="flex items-center space-x-4 pt-4">
       <div class="flex items-center border rounded-full px-4 py-2">
         <button id="decrement" class="text-xl">−</button>
-        <input id="cart-items-quatity" type="number" class="mx-4 text-lg w-12 text-center" value="1" min="1" readonly>
+        <input id="cart-items-quatity" type="number" class="mx-4 text-lg w-20 text-center" value="1" min="1" readonly>
         <button id="increment" class="text-xl">+</button>
       </div>
       <% if logged_in? %>
