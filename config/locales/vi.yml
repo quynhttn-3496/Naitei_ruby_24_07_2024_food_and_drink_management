@@ -1,4 +1,13 @@
 vi:
+  social_share_button:
+    share_to: "Chia sẻ đến"
+    twitter: "Twitter"
+    facebook: "Facebook"
+    weibo: "Weibo"
+    qq: "QQ"
+    douban: "Douban"
+    google_bookmark: "Google Bookmark"
+    delicious: "Delicious"
   helper:
     title_name: "Healthy Eat"
   view:

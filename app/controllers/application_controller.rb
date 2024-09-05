@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include Pagy::Backend
 
+  layout :set_layout
+
   private
 
   def set_locale
