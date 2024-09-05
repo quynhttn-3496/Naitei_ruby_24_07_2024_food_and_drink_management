@@ -1,47 +1,48 @@
-<% if show_tr %>
-  <tr>
-<% end %>
-<td class="py-2 px-4"><%= order.user.username %></td>
-<td class="py-2 px-4">
-  <ul class="list-disc pl-5">
-    <% order.order_items.each do |item| %>
-      <li>
-        <%= item.quantity %> x <%= item.product.name %> 
-        - <%= convert_currency item.product.price %>
-      </li>
-    <% end %>
-  </ul>
-</td>
-<td class="py-2 px-4"><%= convert_currency order.total_invoice %></td>
-<td class="py-2 px-4"><%= order.payment_method&.payment_method || "N/A" %></td>
-<td class="py-2 px-4">
-  <% if order.confirming? %>
-    <button id="open-modal" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" data-modal-target="reason-modal">
-      <%= t "orders.cancel_button" %>
-    </button>
-    <div id="reason-modal" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 flex justify-center items-center w-full h-screen overflow-y-auto bg-gray-900 bg-opacity-50">
-      <div class="relative w-full max-w-lg p-4">
-        <div class="relative bg-white rounded-lg shadow-lg dark:bg-gray-700">
-          <div class="flex items-center justify-between p-4 border-b dark:border-gray-600">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-              <%= t("orders.cancel_reason_title") %>
-            </h3>
-            <button type="button" class="text-gray-400 hover:text-gray-900 dark:hover:text-white" data-modal-hide="reason-modal">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-            <% if current_user.admin? %>
-              <%= render partial: "shared/reason_form", locals: {form_url: admin_order_path(id: order.id, type: "cancel"), order: order } %>
-              <% else %>
-                <%= render partial: "shared/reason_form", locals: {form_url: order_path(order), order: order } %>
-            <% end %>          
-            </div>
+<tr>
+  <td class="py-2 px-4"><%= order.user.username %></td>
+  <td class="py-2 px-4">
+    <ul class="list-disc pl-5">
+      <% order.order_items.each do |item| %>
+        <li>
+          <%= item.quantity %> x <%= item.product.name %> 
+          - <%= convert_currency item.product.price %>
+        </li>
+      <% end %>
+    </ul>
+  </td>
+  <td class="py-2 px-4"><%= convert_currency order.total_invoice %></td>
+  <td class="py-2 px-4"><%= order.payment_method&.payment_method || "N/A" %></td>
+  <td class="py-2 px-4">
+    <% if order.confirming? %>
+      <button id="open-modal" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" data-modal-target="reason-modal">
+        <%= t "orders.cancel_button" %>
+      </button>
+      <div id="reason-modal" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 flex justify-center items-center w-full h-screen overflow-y-auto bg-gray-900 bg-opacity-50">
+        <div class="relative w-full max-w-lg p-4">
+          <div class="relative bg-white rounded-lg shadow-lg dark:bg-gray-700">
+            <div class="flex items-center justify-between p-4 border-b dark:border-gray-600">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                <%= t("orders.cancel_reason_title") %>
+              </h3>
+              <button type="button" class="text-gray-400 hover:text-gray-900 dark:hover:text-white" data-modal-hide="reason-modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+              <% if current_user.admin? %>
+                <%= render partial: "shared/reason_form", locals: {form_url: admin_order_path(id: order.id, type: "cancel"), order: order } %>
+                <% else %>
+                  <%= render partial: "shared/reason_form", locals: {form_url: order_path(order), order: order } %>
+              <% end %>          
+              </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  </td>
+  <% if order.confirming? && current_user.admin? %>
+    <td class="py-2 px-4">
+      <%= button_to t("orders.acept_button"), admin_order_path(id: order.id, type: "accept"), :method => :patch , data: {turbo_confirm: t("orders.acept_confirm")}, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
+    </td>
   <% end %>
-</td>
-<% if show_tr %>
-  <tr>
-<% end %>
+</tr>
