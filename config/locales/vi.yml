@@ -75,6 +75,7 @@ vi:
     max_price: "Giá Tối Đa"
     filter_button: "Lọc"
     filter_cate: "Tìm kiếm theo danh mục"
+    create_success: "Tạo sản phẩm thành công"
   share: "Chia sẻ"
   products:
     title: "Danh sách sản phẩm"

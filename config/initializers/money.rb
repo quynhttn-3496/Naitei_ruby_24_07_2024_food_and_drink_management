@@ -17,8 +17,8 @@ MoneyRails.configure do |config|
   # Example:
   config.locale_backend = :i18n
   config.default_currency = :vnd
-  config.add_rate "USD", "VND", 24922
-  config.add_rate "VND", "USD", 0.000040
+  config.add_rate "USD", "VND", 24000
+  config.add_rate "VND", "USD", 0.00004167
 
   # To handle the inclusion of validations for monetized fields
   # The default value is true
