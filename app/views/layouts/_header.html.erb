@@ -24,7 +24,7 @@
   <% end %>
 
     <div class="flex space-x-4">
-      <% if logged_in? %>
+      <%if user_signed_in?%>
         <%= link_to carts_path, class: "flex items-center space-x-1 text-green-700" do %>
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h14M9 21h6a2 2 0 002-2v-7H7v7a2 2 0 002 2zM8 6h11M8 6H5l-1-2H3M13 3v4h5l-3 2H8l3-2V3" />
@@ -59,20 +59,20 @@
 
           <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block" id = "dropdown-menu">
             <div class="py-1">
-              <%= link_to t("view.sessions.profile"), current_user, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= link_to t("view.sessions.profile"), "#", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
               <%= link_to t("view.sessions.settings"), "#", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-              <%= link_to t("view.sessions.logout"), logout_path, data: { "turbo-method": :delete }, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= link_to t("view.sessions.logout"), destroy_user_session_path, data: { "turbo-method": :delete }, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
             </div>
           </div>
         </div>
-      <% else %>
-        <%= link_to login_path, class: "flex items-center space-x-1 text-green-700" do %>
+      <%else%>
+        <%= link_to user_session_path, class: "flex items-center space-x-1 text-green-700" do %>
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h3l-4-4m0 0l-4 4m4-4v12" />
           </svg>
           <span><%= t "view.layouts.header.login" %></span>
         <% end %> 
-      <% end %>
+      <%end%>
     </div>
   </div>
 </header>

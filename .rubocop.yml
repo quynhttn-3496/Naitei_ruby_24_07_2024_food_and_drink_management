@@ -346,9 +346,7 @@ Style/PercentLiteralDelimiters:
     '%W': ()
     '%x': ()
 
-Naming/PredicateName:
-  ForbiddenPrefixes:
-    - get_
+
 
 Style/RaiseArgs:
   EnforcedStyle: exploded
