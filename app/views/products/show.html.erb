@@ -10,19 +10,13 @@
     <ul class="share flex space-x-4 mt-4 mx-auto justify-center items-center">
       <li class="text-gray-800 font-medium"><%= t "share" %></li>
       <li class="size-8">
-        <%= link_to "#" do %>
-          <%= image_tag "facebook.png", alt: "Facebook" %>
-        <% end %>
+        <%= soical_share_link "facebook" %>
       </li>
       <li class="size-8">
-        <%= link_to "#" do %>
-          <%= image_tag "instagram.png", alt: "Instagram" %>
-        <% end %>
+        <%= soical_share_link "instagram" %>
       </li>
       <li class="size-8">
-        <%= link_to "#" do %>
-          <%= image_tag "twitter.png", alt: "Twitter" %>
-        <% end %>
+        <%= soical_share_link "twitter" %>
       </li>
     </ul>
   </div>

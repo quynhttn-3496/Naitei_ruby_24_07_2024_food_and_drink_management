@@ -22,4 +22,23 @@ module ApplicationHelper
   def currency_options
     [%w(VND VND), %w(USD USD)]
   end
+
+  def soical_share_link platform
+    base_url = "https://www.#{platform}.com/sharer/sharer.php?u="
+
+    onclick_code = <<-JS.strip_heredoc
+      var width = 600;
+      var height = 500;
+      var left = (window.innerWidth - width) / 2;
+      var top = (window.innerHeight - height) / 2;
+      window.open(this.href, "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=" + height + ",width=" + width + ",top=" + top + ",left=" + left);
+      return false;
+    JS
+
+    link_to "#{base_url}#{request.original_url}",
+            onclick: onclick_code,
+            class: "social-share-link" do
+              image_tag "#{platform}.png", alt: platform
+            end
+  end
 end
