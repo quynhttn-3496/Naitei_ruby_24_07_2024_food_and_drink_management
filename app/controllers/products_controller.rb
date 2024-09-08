@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   def index
     apply_filters
     paginate_products
@@ -6,10 +7,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by id: params[:id]
-    return if @product
+    unless @product
+      return redirect_to root_path, warning: t("product.not_found")
+    end
 
-    flash[:warning] = t "product.not_found"
-    redirect_to root_path
+    @pagy, @reviews = pagy(@product.reviews.recent, limit: Settings.reviews_5)
   end
 
   private

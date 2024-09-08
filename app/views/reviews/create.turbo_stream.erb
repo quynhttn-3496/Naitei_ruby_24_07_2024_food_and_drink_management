@@ -1,0 +1,3 @@
+<%= turbo_stream.update "new_review_form" do %>
+  <%= render partial: "reviews/form", locals: { product: @product, review: @review } %>
+<% end %>

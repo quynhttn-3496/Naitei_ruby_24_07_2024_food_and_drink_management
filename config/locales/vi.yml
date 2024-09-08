@@ -206,3 +206,15 @@ vi:
     the_form_contains: "Form bao gồm"
   search: 
     placeholder: "Tìm kiếm đồ ăn yêu thích"
+  reviews:
+    no_reviews: "Chưa có đánh giá"
+    input_star: "Đánh giá sao:"
+    input_comment: "Nhập đánh giá của bạn..."
+    send: "Gửi"
+    rating: "sao"
+    title: "Đánh giá của người dùng"
+    reviews: "đánh giá"
+    rating: "đánh giá sao"
+    deleted_success: "Xóa thành công"
+    updated_success: "Cập nhật thành công"
+    update_failed: "Cập nhật thất bại"
