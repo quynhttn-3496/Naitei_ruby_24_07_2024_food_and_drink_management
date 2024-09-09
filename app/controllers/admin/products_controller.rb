@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_admin!
   before_action :find_product, only: %i(edit update show destroy)
   before_action :get_category_all

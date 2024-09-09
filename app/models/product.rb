@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_one :cart_item, dependent: :destroy
   has_one :discount, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+  has_many :reviews, dependent: :destroy, as: :reviewable
   has_many_attached :images
 
   monetize :price_cents, with_model_currency: :currency, allow_nil: true

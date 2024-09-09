@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_27_070241) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_08_085139) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -131,14 +131,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_070241) do
   end
 
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.integer "rating"
     t.string "comment"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.string "reviewable_type", null: false
+    t.bigint "reviewable_id", null: false
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -168,6 +169,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_070241) do
   add_foreign_key "orders", "payment_methods"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
-  add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end

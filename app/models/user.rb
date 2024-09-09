@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_one :cart, dependent: :destroy
   has_many :addresses, dependent: :destroy
-  has_many :reviews, dependent: :destroy, as: :reviewable
+  has_many :reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
 
   accepts_nested_attributes_for :addresses

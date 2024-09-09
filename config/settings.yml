@@ -9,3 +9,5 @@ instruct_arr: ["purchase_guide", "return_guide", "payment_guide", "collaborator_
 social_link: "https://www.facebook.com/linhdinhlhpk97"
 page_10: 10
 exchange_rate_24: 24_000
+max_comment_200: 200
+reviews_5: 5

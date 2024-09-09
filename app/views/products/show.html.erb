@@ -21,7 +21,7 @@
     </ul>
   </div>
   <div class="description w-1/2 p-4">
-    <h1 class="text-2xl font-bold"><%= @product.name %></h1>
+    <h1 class="font-manrope font-bold text-3xl"><%= @product.name %></h1>
     <div class="flex">
       <p class="mr-2"></p><%= t "product.in_stock" %></p>
       <p>:</p>
@@ -61,3 +61,4 @@
     </div>
   </div>
 </div>
+<%= render "reviews/index" %>

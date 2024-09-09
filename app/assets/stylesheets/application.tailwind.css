@@ -17,3 +17,8 @@
 .pagy.nav .current {
   @apply bg-blue-600 text-white border-transparent;
 }
+
+.star {
+  cursor: pointer;
+  transition: fill 0.3s ease-in-out;
+}

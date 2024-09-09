@@ -6,6 +6,7 @@ ruby "3.2.2"
 gem "active_storage_validations", "0.9.8"
 gem "bcrypt", "3.1.18"
 gem "bootsnap", require: false
+gem "cancancan"
 gem "config"
 gem "importmap-rails"
 gem "jbuilder"
