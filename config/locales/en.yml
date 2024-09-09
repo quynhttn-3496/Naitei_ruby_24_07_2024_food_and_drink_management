@@ -83,6 +83,7 @@ en:
     max_price: "Maximum Price"
     filter_button: "Filter"
     filter_cate: "Filter by category"
+    create_success: "Create product successfully"
   share: "Share"
   products:
     title: "Product List"
