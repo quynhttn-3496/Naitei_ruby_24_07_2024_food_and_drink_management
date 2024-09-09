@@ -174,7 +174,6 @@ vi:
     cancel_reason_title: "Hủy Đơn Hàng"
     cancel_reason_label: "Lý do hủy đơn"
     cancel_reason_placeholder: "Vui lòng nhập lý do hủy đơn hàng."
-    cancel_button: "Hủy"
     submit_button: "Xác nhận"
     cannot_update_reason: "Không thể cập nhật lý do."
     cannot_process_items_notice: "Không thể xử lý các mặt hàng của đơn hàng."
@@ -189,6 +188,7 @@ vi:
   not_admin: "bạn không có quyền truy cập"
   not_signed: "bạn cần đăng nhập"
   search:
+    search: "Tìm kiếm"
     placeholder: "Tìm kiếm đồ ăn yêu thích"
   edit: "Sửa"
   update: "Cập nhật"
@@ -204,8 +204,6 @@ vi:
     errors: "Có lỗi xảy ra"
     error: "lỗi"
     the_form_contains: "Form bao gồm"
-  search: 
-    placeholder: "Tìm kiếm đồ ăn yêu thích"
   reviews:
     no_reviews: "Chưa có đánh giá"
     input_star: "Đánh giá sao:"
@@ -214,7 +212,6 @@ vi:
     rating: "sao"
     title: "Đánh giá của người dùng"
     reviews: "đánh giá"
-    rating: "đánh giá sao"
     deleted_success: "Xóa thành công"
     updated_success: "Cập nhật thành công"
     update_failed: "Cập nhật thất bại"
@@ -231,19 +228,17 @@ vi:
     change_link: "Thay đổi mật khẩu của tôi"
     ignore: "Nếu bạn không yêu cầu điều này, xin vui lòng bỏ qua email này."
     no_change: "Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập liên kết trên và tạo một mật khẩu mới."
+    new_password: "Mật khẩu mới"
+    characters_minimum: "ký tự tối thiểu"
+    confirm_password: "Xác nhận mật khẩu mới"
+    change_password: "Thay đổi mật khẩu của tôi"
+    email_label: "Email"
+    submit_button: "Gửi cho tôi hướng dẫn đặt lại mật khẩu"
   account_lock:
     hello: "Xin chào %{email}!"
     locked: "Tài khoản của bạn đã bị khóa do số lần đăng nhập không thành công quá nhiều."
     unlock_instruction: "Nhấp vào liên kết bên dưới để mở khóa tài khoản của bạn:"
     unlock_link: "Mở khóa tài khoản của tôi"
-  password_reset:
-    new_password: "Mật khẩu mới"
-    characters_minimum: "ký tự tối thiểu"
-    confirm_password: "Xác nhận mật khẩu mới"
-    change_password: "Thay đổi mật khẩu của tôi"
-  password_reset:
-    email_label: "Email"
-    submit_button: "Gửi cho tôi hướng dẫn đặt lại mật khẩu"
   sign_up:
     title: "Đăng ký"
     email_label: "Email"
@@ -271,3 +266,9 @@ vi:
     unlocks:
       resend_title: "Gửi lại hướng dẫn mở khóa"
       resend_button: "Gửi lại hướng dẫn mở khóa"
+  cannot_access: "Bạn không có quyền truy cập vào trang này."
+  please_login: "Vui lòng đăng nhập để tiếp tục."
+  all: "Tất cả"
+  min_price: "Giá tối thiểu"
+  max_price: "Giá tối đa"
+  create_day: "Ngày tạo"

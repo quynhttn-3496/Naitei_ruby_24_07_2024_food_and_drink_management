@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
+  rescue_from CanCan::AccessDenied do |_exception|
+    if current_user
+      redirect_to root_path, alert: t("cannot_access")
+    else
+      redirect_to user_session_path, alert: t("please_login")
+    end
+  end
+
   private
 
   def set_locale
