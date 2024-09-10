@@ -218,3 +218,56 @@ vi:
     deleted_success: "Xóa thành công"
     updated_success: "Cập nhật thành công"
     update_failed: "Cập nhật thất bại"
+  email_confirmation:
+    welcome: "Chào mừng %{email}!"
+    instruction: "Bạn có thể xác nhận email tài khoản của mình qua liên kết bên dưới:"
+    confirm_account: "Xác nhận tài khoản của tôi"
+  password_change:
+    hello: "Xin chào %{email}!"
+    notification: "Chúng tôi liên hệ với bạn để thông báo rằng mật khẩu của bạn đã được thay đổi."
+  password_reset:
+    hello: "Xin chào %{email}!"
+    request: "Có người đã yêu cầu một liên kết để thay đổi mật khẩu của bạn. Bạn có thể thực hiện điều này qua liên kết bên dưới."
+    change_link: "Thay đổi mật khẩu của tôi"
+    ignore: "Nếu bạn không yêu cầu điều này, xin vui lòng bỏ qua email này."
+    no_change: "Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập liên kết trên và tạo một mật khẩu mới."
+  account_lock:
+    hello: "Xin chào %{email}!"
+    locked: "Tài khoản của bạn đã bị khóa do số lần đăng nhập không thành công quá nhiều."
+    unlock_instruction: "Nhấp vào liên kết bên dưới để mở khóa tài khoản của bạn:"
+    unlock_link: "Mở khóa tài khoản của tôi"
+  password_reset:
+    new_password: "Mật khẩu mới"
+    characters_minimum: "ký tự tối thiểu"
+    confirm_password: "Xác nhận mật khẩu mới"
+    change_password: "Thay đổi mật khẩu của tôi"
+  password_reset:
+    email_label: "Email"
+    submit_button: "Gửi cho tôi hướng dẫn đặt lại mật khẩu"
+  sign_up:
+    title: "Đăng ký"
+    email_label: "Email"
+    username_label: "Tên người dùng"
+    password_label: "Mật khẩu"
+    characters_minimum: "ký tự tối thiểu"
+    password_confirmation_label: "Xác nhận mật khẩu"
+    submit_button: "Đăng ký"
+  login:
+    email_label: "Email"
+    password_label: "Mật khẩu"
+    remember_me: "Ghi nhớ đăng nhập"
+    submit_button: "Đăng nhập"
+  links:
+    log_in: "Đăng nhập"
+    sign_up: "Đăng ký"
+    forgot_password: "Quên mật khẩu?"
+    resend_confirmation: "Chưa nhận được hướng dẫn xác nhận?"
+    resend_unlock: "Chưa nhận được hướng dẫn mở khóa?"
+    omniauth_button: "%{provider}"
+  confirmation:
+    resend_title: "Gửi lại hướng dẫn xác nhận"
+    resend_button: "Gửi lại hướng dẫn xác nhận"
+  devise:
+    unlocks:
+      resend_title: "Gửi lại hướng dẫn mở khóa"
+      resend_button: "Gửi lại hướng dẫn mở khóa"

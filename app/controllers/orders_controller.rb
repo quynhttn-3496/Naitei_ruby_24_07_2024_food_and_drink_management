@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
   def handle_not_login
     return if current_user
 
-    redirect_to login_path
+    redirect_to signin_path
   end
 
   def build_order
@@ -80,7 +80,7 @@ class OrdersController < ApplicationController
   end
 
   def authenticate_user!
-    return if logged_in?
+    return if user_signed_in?
 
     redirect_to root_path, alert: t("not_signed")
   end

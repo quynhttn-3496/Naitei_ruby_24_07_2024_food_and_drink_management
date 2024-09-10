@@ -215,3 +215,56 @@ en:
     deleted_success: "Deleted success"
     updated_success: "Updated success"
     update_failed: "Updated failed"
+  email_confirmation:
+    welcome: "Welcome %{email}!"
+    instruction: "You can confirm your account email through the link below:"
+    confirm_account: "Confirm my account"
+  password_change:
+    hello: "Hello %{email}!"
+    notification: "We're contacting you to notify you that your password has been changed."
+  password_reset:
+    hello: "Hello %{email}!"
+    request: "Someone has requested a link to change your password. You can do this through the link below."
+    change_link: "Change my password"
+    ignore: "If you didn't request this, please ignore this email."
+    no_change: "Your password won't change until you access the link above and create a new one."
+  account_lock:
+    hello: "Hello %{email}!"
+    locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+    unlock_instruction: "Click the link below to unlock your account:"
+    unlock_link: "Unlock my account"
+  password_reset:
+    new_password: "New password"
+    characters_minimum: "characters minimum"
+    confirm_password: "Confirm new password"
+    change_password: "Change my password"
+  password_reset:
+    email_label: "Email"
+    submit_button: "Send me reset password instructions"
+  sign_up:
+    title: "Sign up"
+    email_label: "Email"
+    username_label: "Username"
+    password_label: "Password"
+    characters_minimum: "characters minimum"
+    password_confirmation_label: "Password confirmation"
+    submit_button: "Sign up"
+  login:
+    email_label: "Email"
+    password_label: "Password"
+    remember_me: "Remember me"
+    submit_button: "Log in"
+  links:
+    log_in: "Log in"
+    sign_up: "Sign up"
+    forgot_password: "Forgot your password?"
+    resend_confirmation: "Didn't receive confirmation instructions?"
+    resend_unlock: "Didn't receive unlock instructions?"
+    omniauth_button: "%{provider}"
+  confirmation:
+    resend_title: "Resend confirmation instructions"
+    resend_button: "Resend confirmation instructions"
+  devise:
+    unlocks:
+      resend_title: "Resend unlock instructions"
+      resend_button: "Resend unlock instructions"

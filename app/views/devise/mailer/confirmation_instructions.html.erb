@@ -1,0 +1,5 @@
+<p><%= t("email_confirmation.welcome", email: @resource.email) %></p>
+
+<p><%= t("email_confirmation.instruction") %></p>
+
+<p><%= link_to t("email_confirmation.confirm_account"), confirmation_url(@resource, confirmation_token: @resource.confirmation_token) %></p>
