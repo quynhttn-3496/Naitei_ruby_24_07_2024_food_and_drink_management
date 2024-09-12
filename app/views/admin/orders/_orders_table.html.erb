@@ -7,7 +7,7 @@
         <%= sort_link(@q, :total_invoice_cents, t("orders.table.total"), default_order: :asc) %>     
       </th>
       <th class="py-2 px-4 text-left">
-        <%= sort_link(@q, "payment_methods.payment_method", t("orders.table.payment_method"), default_order: :asc) %>     
+        <%= sort_link(@q, :payment_method_enum, t("orders.table.payment_method"), default_order: :asc) %>     
       </th>
       <th class="py-2 px-4 text-left"><%= t "orders.table.actions" %></th>
       <th class="py-2 px-4 text-left"><%= t "orders.table.acept" %></th>
