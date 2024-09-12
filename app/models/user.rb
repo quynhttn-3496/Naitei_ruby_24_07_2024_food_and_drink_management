@@ -24,6 +24,15 @@ class User < ApplicationRecord
     length: {maximum: Settings.validate_len_email},
     format: {with: Settings.VALID_EMAIL_REGEX}, uniqueness: true
 
+  class << self
+    def ransackable_attributes _auth_object
+      %w(id phone email username)
+    end
+
+    def ransackable_associations _auth_object
+      %w(cart orders reviews)
+    end
+  end
   def self.digest string
     cost = if ActiveModel::SecurePassword.min_cost
              BCrypt::Engine::MIN_COST
@@ -55,7 +64,6 @@ class User < ApplicationRecord
   end
 
   def create_activation_digest
-    # self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
 

@@ -6,7 +6,7 @@ end
   user = User.create!(
     email: "admin#{i + 1}@example.com",
     username: "admin#{i + 1}",
-    password: "password",
+    password: "123456",
     role: 0
   )
   user.create_cart!
@@ -15,7 +15,7 @@ end
   user = User.create!(
     email: "user#{i + 1}@example.com",
     username: "user#{i + 1}",
-    password: "password",
+    password: "123456",
     role: 1
   )
   user.create_cart!

@@ -18,6 +18,11 @@ class Order < ApplicationRecord
 
   scope :with_status, ->(status){where(status:) if status.present?}
   scope :for_user, ->(user_id){where(user_id:) if user_id.present?}
+  scope :sort_by_payment_method, lambda {|direction = :asc|
+    joins(:payment_method)
+      .order(Arel.sql("FIELD(payment_methods.payment_method,
+      'credit_card', 'paypal', 'bank_transfer') #{direction.to_s.upcase}"))
+  }
   scope :current_month, lambda {|_x = nil|
     start_of_month = Time.current.beginning_of_month
     end_of_month = Time.current.end_of_month
@@ -30,7 +35,24 @@ class Order < ApplicationRecord
     where created_at: start_of_last_month..end_of_last_month
   }
 
+  %w(status reason payment_method_id user_id).each do |column|
+    ransacker column do
+      Arel.sql("CAST(#{column} AS CHAR)")
+    end
+  end
+
+  ransack_alias :search,
+                :status_or_reason_cont
+
   class << self
+    def ransackable_attributes _auth_object
+      super + %w(payment_method username search adrress phone)
+    end
+
+    def ransackable_associations _auth_object
+      super + %w(user payment_method address)
+    end
+
     def revenue_percentage_change
       current_month_revenue = succeeded.current_month.sum :total_invoice_cents
       previous_month_revenue = succeeded.previous_month.sum :total_invoice_cents

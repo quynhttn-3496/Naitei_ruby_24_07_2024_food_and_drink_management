@@ -278,3 +278,20 @@ en:
   min_price: "Minimum price"
   max_price: "Maximum price"
   create_day: "Creation date"
+  date_format: "YYYY-MM-DD"
+  search:
+    placeholders:
+      search_cont: "Reason, status"
+      total_invoice_cents_gteq: "Minimum price"
+      total_invoice_cents_lteq: "Maximum price"
+    labels:
+      status_eq: "Status"
+      created_at_gteq: "Created from"
+      created_at_lteq: "to"
+    buttons:
+      submit: "Search"
+  helpers:
+    placeholder:
+      user_username_cont: "Customer Name"
+      user_phone_cont: "Recipient's Phone Number"
+      address_address_cont: "Delivery Address"
