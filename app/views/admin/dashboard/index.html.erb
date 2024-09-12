@@ -1,0 +1,77 @@
+<div class="grid grid-cols-4 grid-rows-3 gap-4 pl-4">
+  <div class="col-span-2 pb-8">
+    <div class="bg-white shadow-md rounded-lg p-4 max-w-xs">
+      <div class="flex justify-between items-start">
+        <div>
+          <h2 class="text-gray-800 font-semibold"><%= t "dashboard.revenue" %></h2>
+        </div>
+        <div class="text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12h.01M12 12h.01M18 12h.01" />
+          </svg>
+        </div>
+      </div>
+      <div class="mt-4">
+        <span class="text-sm font-medium text-gray-500"><%= t "dashboard.per_month" %></span>
+        <div class="flex items-center mt-1">
+          <span class="text-3xl font-bold text-gray-900"><%= number_to_currency @total_amount_this_month, precision: 0 %></span>
+          <% if @revenue_change_percentage > 0 %>
+            <span class="text-sm font-medium text-green-600 bg-green-100 rounded-full px-2 py-1 ml-2">
+              +<%= @revenue_change_percentage %>%</span>
+          <% elsif @revenue_change_percentage < 0 %>
+            <span class="text-sm font-medium text-red-600 bg-red-100 rounded-full px-2 py-1 ml-2">
+              <%= @revenue_change_percentage %>%</span>
+          <% else %>
+            <span class="text-sm font-medium text-gray-600 bg-gray-100 rounded-full px-2 py-1 ml-2">
+              <%= @revenue_change_percentage %>%</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-span-2 col-start-3 pb-8">
+    <div class="bg-white shadow-md rounded-lg p-4 max-w-xs">
+      <div class="flex justify-between items-start">
+        <div>
+          <h2 class="text-gray-800 font-semibold"><%= t "dashboard.orders" %></h2>
+        </div>
+        <div class="text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12h.01M12 12h.01M18 12h.01" />
+          </svg>
+        </div>
+      </div>
+      <div class="mt-4">
+        <span class="text-sm font-medium text-gray-500"><%= t "dashboard.per_month" %></span>
+        <div class="flex items-center mt-1">
+          <span class="text-3xl font-bold text-gray-900"><%= @total_orders_this_month %></span>
+          <% if @order_count_change_percentage > 0 %>
+            <span class="text-sm font-medium text-green-600 bg-green-100 rounded-full px-2 py-1 ml-2">
+              +<%= @order_count_change_percentage %>%</span>
+          <% elsif @order_count_change_percentage < 0 %>
+            <span class="text-sm font-medium text-red-600 bg-red-100 rounded-full px-2 py-1 ml-2">
+              <%= @order_count_change_percentage %>%</span>
+          <% else %>
+            <span class="text-sm font-medium text-gray-600 bg-gray-100 rounded-full px-2 py-1 ml-2">
+              <%= @order_count_change_percentage %>%</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-span-2 row-start-2 pb-8">
+    <h2 class="font-bold text-2xl pb-2"><%= t "dashboard.revenue_by_category" %></h2>
+    <%= line_chart @revenue_by_category_month %>
+
+  </div>
+  <div class="col-span-2 col-start-3 row-start-2 pb-8">
+    <h2 class="font-bold text-2xl pb-2"><%= t "dashboard.product_count_by_category" %></h2>
+    <%= pie_chart @products_by_category_revenue %>
+  </div>
+  <div class="col-span-4 row-start-3 pb-8">
+    <h2 class="font-bold text-2xl pb-2"><%= t "dashboard.revenue" %></h2>
+    <%= column_chart @monthly_revenue %>
+  </div>
+</div>

@@ -1,4 +1,10 @@
 en:
+  dashboard:
+    revenue: "Revenue"
+    per_month: "Per month"
+    orders: "Orders"
+    revenue_by_category: "Revenue by category"
+    product_count_by_category: "Product count by category"
   social_share_button:
     share_to: "Share to"
     twitter: "Twitter"
