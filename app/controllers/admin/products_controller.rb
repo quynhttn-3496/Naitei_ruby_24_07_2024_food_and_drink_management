@@ -4,8 +4,9 @@ class Admin::ProductsController < ApplicationController
   before_action :find_product, only: %i(edit update show destroy)
   before_action :get_category_all
   def index
-    @pagy, @products = pagy Product.order_by_name, limit: Settings.page_10
-
+    @q = Product.ransack(params[:q], auth_object: current_user)
+    @pagy, @products = pagy @q.result, limit: Settings.page_10
+    @category_names = Category.sorted_names
     @product = Product.new
   end
 
@@ -58,10 +59,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def authenticate_admin!
-    return if current_user&.admin?
-
-    flash[:alert] = t "authen.admin"
-    redirect_to root_path
+    authorize! :manage, :admin_page
   end
 
   def get_category_all

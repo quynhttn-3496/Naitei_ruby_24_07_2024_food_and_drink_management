@@ -80,9 +80,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    builder (3.2.4)
+    builder (3.3.0)
     cancancan (3.6.1)
-    capybara (3.39.2)
+    capybara (3.40.0)
       addressable
       matrix
       mini_mime (>= 0.1.3)
@@ -204,7 +204,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
-    pagy (9.0.8)
+    pagy (9.0.9)
     parallel (1.26.3)
     parser (3.3.5.0)
       ast (~> 2.4.1)
@@ -259,6 +259,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.2.1)
+    ransack (4.2.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
@@ -380,6 +384,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.5)
   rails-i18n
+  ransack
   rspec-rails (~> 4.0.1)
   rubocop (~> 1.26)
   rubocop-checkstyle_formatter

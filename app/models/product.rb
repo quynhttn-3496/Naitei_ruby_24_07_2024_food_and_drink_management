@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   PRODUCT_PARAMS = [:name, :description,
   :quantity_in_stock, :price_cents, :currency, :category_id, {images: []}]
                    .freeze
+
   belongs_to :category
   has_many :order_items, dependent: :destroy
   has_one :cart_item, dependent: :destroy
@@ -10,9 +11,14 @@ class Product < ApplicationRecord
   has_many_attached :images
 
   monetize :price_cents, with_model_currency: :currency, allow_nil: true
-  scope :order_by_name, ->{order :name}
 
   accepts_nested_attributes_for :category
+
+  validates :name, :price_cents, :currency, :quantity_in_stock, :category_id,
+            presence: true
+
+  scope :order_by_name, ->{order :name}
+
   scope :global_search, lambda {|query|
     return if query.blank?
 
@@ -31,14 +37,35 @@ class Product < ApplicationRecord
     where(category_id:) if category_id.present?
   }
 
-  def self.convert_to_vnd price
-    if I18n.locale == :en
-      (price * Settings.exchange_rate_24).round
-    else
-      price
+  ransack_alias :search_all_text,
+                :name_or_description_cont
+
+  class << self
+    def ransackable_attributes auth_object
+      if auth_object&.admin?
+        %w(search_all_text category_id created_at currency
+        delivery_quantity description id name price_cents
+        quantity_in_stock updated_at)
+      else
+        %w(currency description name price_cents currency)
+      end
+    end
+
+    def ransackable_associations auth_object
+      if auth_object&.admin?
+        %w(cart_item category discount images_attachments
+          images_blobs order_items reviews)
+      else
+        %w(category)
+      end
+    end
+
+    def convert_to_vnd price
+      if I18n.locale == :en
+        (price * Settings.exchange_rate_24).round
+      else
+        price
+      end
     end
   end
-
-  validates :name, :price_cents, :currency, :quantity_in_stock, :category_id,
-            presence: true
 end
