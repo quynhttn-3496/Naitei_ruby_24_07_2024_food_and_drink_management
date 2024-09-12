@@ -1,4 +1,10 @@
 vi:
+  dashboard:
+    revenue: "Doanh thu"
+    per_month: "Theo tháng"
+    orders: "Đơn hàng"
+    revenue_by_category: "Doanh thu theo danh mục"
+    product_count_by_category: "Số sản phẩm theo danh mục"
   social_share_button:
     share_to: "Chia sẻ đến"
     twitter: "Twitter"

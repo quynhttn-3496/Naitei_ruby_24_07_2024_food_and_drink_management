@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   scope "(:locale)", locale: /en|vi/ do   
-    namespace :admin do
-      resources :orders, only: %i(index update)
-      resources :products
-    end
-
     root "products#index"
-    
+  
     devise_for :users,  skip: :omniauth_callbacks do
       get "signin" => "devise/sessions#new"
       post "signin" => "devise/sessions#create"
@@ -18,5 +13,12 @@ Rails.application.routes.draw do
     resources :cart_items
     resource :carts
     resources :orders
+
+    namespace :admin do
+      root to: "dashboard#index"
+      get "dashboard", to: "dashboard#index"
+      resources :orders, only: %i(index update)
+      resources :products
+    end
   end
 end
