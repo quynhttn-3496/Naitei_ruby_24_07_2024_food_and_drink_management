@@ -278,3 +278,20 @@ vi:
   min_price: "Giá tối thiểu"
   max_price: "Giá tối đa"
   create_day: "Ngày tạo"
+  date_format: "YYYY-MM-DD"
+  search:
+    placeholders:
+      search_cont: "Lý do, trạng thái"
+      total_invoice_cents_gteq: "Giá tiền tối thiểu"
+      total_invoice_cents_lteq: "Giá tiền tối đa"
+    labels:
+      status_eq: "Trạng thái"
+      created_at_gteq: "Ngày tạo từ"
+      created_at_lteq: "đến"
+    buttons:
+      submit: "Tìm kiếm"
+  helpers:
+    placeholder:
+      user_username_cont: "Tên khách hàng"
+      user_phone_cont: "Số điện thoại nhận hàng"
+      address_address_cont: "Địa chỉ nhận hàng"

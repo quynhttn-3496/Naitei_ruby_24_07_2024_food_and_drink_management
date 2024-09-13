@@ -1,5 +1,6 @@
 <div class="bg-gray-50 shadow-lg rounded-lg p-6 mb-8">
   <h1 class="text-3xl font-extrabold text-green-600 mb-6"><%= t "orders.title" %></h1>
+  <%= render partial: "form_search" %>
   <nav class="mb-6">
     <ul class="flex space-x-8">
       <li>
@@ -21,4 +22,7 @@
   <div class="bg-white shadow-md rounded-lg p-6">
     <%= render partial: "orders_table", locals: { orders: @orders } %>
   </div>
+</div>
+<div class="mt-4 flex justify-center items-center">
+  <%== pagy_nav(@pagy) %>
 </div>

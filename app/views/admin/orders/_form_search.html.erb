@@ -1,0 +1,42 @@
+<%= search_form_for @q, url: admin_orders_path, method: :get, class: "grid grid-cols-6 gap-4 mb-4" do |f| %>
+
+  <div class="col-span-2">
+    <%= f.search_field :search_cont, placeholder: t("search.placeholders.search_cont"), class: "border rounded p-2 w-full" %>
+  </div>
+
+  <div class="col-span-2">
+    <%= f.search_field :user_username_cont, placeholder: t('helpers.placeholder.user_username_cont'), class: "border rounded p-2 w-full" %>
+  </div>
+
+  <div class="col-span-2">
+    <%= f.number_field :user_phone_cont, placeholder: t('helpers.placeholder.user_phone_cont'), class: "border rounded p-2 w-full" %>
+  </div>
+
+  <div class="col-span-2">
+    <%= f.search_field :address_address_cont, placeholder: t('helpers.placeholder.address_address_cont'), class: "border rounded p-2 w-full" %>
+  </div>
+
+  <div class="col-span-1">
+    <%= f.number_field :total_invoice_cents_gteq, placeholder: t("search.placeholders.total_invoice_cents_gteq"), class: "border rounded p-2 w-full" %>
+  </div>
+
+  <div class="col-span-1">
+    <%= f.number_field :total_invoice_cents_lteq, placeholder: t("search.placeholders.total_invoice_cents_lteq"), class: "border rounded p-2 w-full" %>
+  </div>
+
+  <div class="col-span-2">
+    <%= f.select :status_eq, status_options_for_select, include_blank: t("search.labels.status_eq"), class: "border rounded p-2 w-full" %>
+  </div>
+
+  <div class="col-span-2 flex items-center space-x-4">
+    <label for="created_at_date_gteq" class="whitespace-nowrap"><%= t "search.labels.created_at_gteq" %></label>
+    <%= f.date_field :created_at_gteq, placeholder: "YYYY-MM-DD", class: "border rounded p-2 w-full" %>    
+    <label for="created_at_date_lteq" class="whitespace-nowrap"><%= t "search.labels.created_at_lteq" %></label>
+    <%= f.date_field :created_at_lteq, placeholder: "YYYY-MM-DD", class: "border rounded p-2 w-full" %>  
+  </div>
+
+  <div class="col-span-6 text-right">
+    <%= f.submit t("search.buttons.submit"), class: "btn btn-primary bg-blue-500 text-white rounded px-4 py-2" %>
+  </div>
+
+<% end %>
