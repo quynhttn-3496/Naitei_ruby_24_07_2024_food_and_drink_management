@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       delete "signout" => "devise/sessions#destroy"
     end
 
-    resources :products
+    resources :products do
+      resources :reviews
+    end
     resources :cart_items
     resource :carts
     resources :orders
@@ -18,7 +20,9 @@ Rails.application.routes.draw do
       root to: "dashboard#index"
       get "dashboard", to: "dashboard#index"
       resources :orders, only: %i(index update)
-      resources :products
+      resources :products do
+        resources :reviews
+      end
     end
   end
 end
