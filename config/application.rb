@@ -15,5 +15,11 @@ module RailsTutorial
     config.i18n.available_locales = [:en, :vi]
     config.i18n.default_locale = :vi
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
   end
 end

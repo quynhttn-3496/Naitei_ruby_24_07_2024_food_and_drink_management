@@ -24,5 +24,9 @@ Rails.application.routes.draw do
         resources :reviews
       end
     end
+
+    namespace :api do
+      post "/login", to: "sessions#create"
+    end
   end
 end
