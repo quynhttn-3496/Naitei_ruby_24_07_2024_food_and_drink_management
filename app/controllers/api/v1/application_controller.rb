@@ -1,4 +1,5 @@
-class Api::ApplicationController < ActionController::API
+class Api::V1::ApplicationController < ActionController::API
+  attr_reader :current_user
   private
 
   def encode_token payload
@@ -18,12 +19,12 @@ class Api::ApplicationController < ActionController::API
   end
 
   def authenticate_user
-    user_id = decode_token[0]["user_id"] if decode_token
+    decoded_token = decode_token
+    user_id = decoded_token[0]["user_id"] if decoded_token
     @current_user = User.find_by(id: user_id) if user_id
 
     return if @current_user
 
-    render json: {message: "Please log in"},
-           status: :unauthorized
+    render json: {message: "Please log in"}, status: :unauthorized
   end
 end

@@ -295,3 +295,19 @@ vi:
       user_username_cont: "Tên khách hàng"
       user_phone_cont: "Số điện thoại nhận hàng"
       address_address_cont: "Địa chỉ nhận hàng"
+  messages:
+    review:
+      no_reviews_found: "Không có đánh giá nào cho sản phẩm này"
+      not_found: "Không tìm thấy đánh giá"
+      created_successfully: "Tạo đánh giá thành công"
+      failed_to_create: "Tạo đánh giá thất bại"
+      updated_successfully: "Cập nhật đánh giá thành công"
+      failed_to_update: "Cập nhật đánh giá thất bại"
+      deleted_successfully: "Xóa đánh giá thành công"
+      failed_to_delete: "Xóa đánh giá thất bại"
+      not_authorized: "Bạn không có quyền xóa đánh giá này"
+    product:
+      not_found: "Không tìm thấy sản phẩm"
+    session:
+      login_success: "Đăng nhập thành công"
+      invalid_email_or_password: "Email hoặc mật khẩu không hợp lệ"
