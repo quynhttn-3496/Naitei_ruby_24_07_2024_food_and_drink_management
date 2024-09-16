@@ -3,6 +3,7 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "3.2.2"
 
+gem "active_model_serializers"
 gem "active_storage_validations", "0.9.8"
 gem "bcrypt", "3.1.18"
 gem "bootsnap", require: false
@@ -13,6 +14,7 @@ gem "devise", "~> 4.1"
 gem "groupdate"
 gem "importmap-rails"
 gem "jbuilder"
+gem "jwt"
 gem "money-rails"
 gem "mysql2"
 gem "omniauth"
@@ -21,6 +23,7 @@ gem "omniauth-rails_csrf_protection"
 gem "pagy"
 gem "pry-rails"
 gem "puma", "~> 5.0"
+gem "rack-cors"
 gem "rails", "~> 7.0.5"
 gem "rails-i18n"
 gem "ransack"
