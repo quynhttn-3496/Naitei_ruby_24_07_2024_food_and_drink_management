@@ -31,8 +31,7 @@ class ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to @reviewable, notice: t("reviews.updated_success")
     else
-      flash.now[:alert] = t "reviews.update_failed"
-      render "#{@reviewable.model_name.plural}/edit"
+      redirect_to @reviewable, notice: t("reviews.update_failed")
     end
   end
 
@@ -47,11 +46,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_reviewable
-    @reviewable = if params[:product_id]
-                    Product.find(params[:product_id])
-                  elsif params[:other_model_id]
-                    OtherModel.find(params[:other_model_id])
-                  end
+    @reviewable = Product.find(params[:product_id])
   end
 
   def review_params
