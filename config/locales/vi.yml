@@ -163,7 +163,7 @@ vi:
   orders:
     destroy_notice: "Hủy đơn hàng thành công"
     acept_notice: "Chấp nhận đơn hàng thành công"
-    cannot_acept_notice: "Đơn hàng không được chấp nhận trừ khi nó ở trạng thái xác nhận"
+    cannot_accept_notice: "Đơn hàng không được chấp nhận trừ khi nó ở trạng thái xác nhận"
     cannot_destroy_notice: "Đơn hàng hủy không thành công trừ khi nó ở trạng thái chưa xác nhận"
     cancel_confirm: "Bạn có chắc chắn muốn hủy đơn hàng không"
     cancel_button: "Hủy Đơn Hàng"
