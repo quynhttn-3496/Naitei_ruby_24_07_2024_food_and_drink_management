@@ -3,9 +3,9 @@ class Admin::OrdersController < ApplicationController
   before_action :set_order, only: %i(update)
 
   def index
-    @q = Order.ransack(params[:q])
+    @q = Order.joins(:payment_method).ransack(params[:q])
     @pagy, @orders = pagy(
-      @q.result.sort_by_payment_method.with_status(params[:status]),
+      @q.result.with_status(params[:status]),
       limit: Settings.page_5
     )
   end

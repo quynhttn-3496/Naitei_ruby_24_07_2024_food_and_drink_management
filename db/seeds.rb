@@ -31,7 +31,7 @@ end
     category: category
   )
 end
-payment_methods = ["credit_card", "paypal", "bank_transfer"]
+payment_methods = ["bank_transfer","credit_card", "paypal"]
 payment_methods.each do |method|
   PaymentMethod.create!(payment_method: method)
 end

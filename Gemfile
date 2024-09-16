@@ -44,7 +44,7 @@ group :development, :test do
   gem "rubocop-rails", "~> 2.14.0", require: false
   gem "shoulda-matchers", "~> 5.0"
 
-  gem "rspec-rails", "~> 4.0.1"
+  gem "rspec-rails", "~> 7.0.0"
 
   gem "faker"
 end
