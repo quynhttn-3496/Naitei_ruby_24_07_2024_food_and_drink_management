@@ -26,7 +26,12 @@ Rails.application.routes.draw do
     end
 
     namespace :api do
-      post "/login", to: "sessions#create"
+      namespace :v1 do
+        post "/login", to: "sessions#create"
+        resources :products do
+          resources :reviews
+        end
+      end
     end
   end
 end

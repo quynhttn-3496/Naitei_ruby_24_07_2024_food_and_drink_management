@@ -295,3 +295,19 @@ en:
       user_username_cont: "Customer Name"
       user_phone_cont: "Recipient's Phone Number"
       address_address_cont: "Delivery Address"
+  messages:
+    review:
+      no_reviews_found: "No reviews found for this product"
+      not_found: "Review not found"
+      created_successfully: "Review created successfully"
+      failed_to_create: "Failed to create review"
+      updated_successfully: "Review updated successfully"
+      failed_to_update: "Failed to update review"
+      deleted_successfully: "Review deleted successfully"
+      failed_to_delete: "Failed to delete review"
+      not_authorized: "You are not authorized to delete this review"
+    product:
+      not_found: "Product not found"
+    session:
+      login_success: "Log in success"
+      invalid_email_or_password: "Invalid email or password"
