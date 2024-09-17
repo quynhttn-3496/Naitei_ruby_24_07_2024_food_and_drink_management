@@ -162,7 +162,7 @@ en:
   orders:
     destroy_notice: "Order canceled successfully"
     acept_notice: "Order accepted successfully"
-    cannot_acept_notice: "Cannot accept order unless it is in the confirmed state"
+    cannot_accept_notice: "Cannot accept order unless it is in the confirmed state"
     cannot_destroy_notice: "Cannot cancel order unless it is unconfirmed"
     cancel_confirm: "Are you sure you want to cancel the order?"
     cancel_button: "Cancel Order"

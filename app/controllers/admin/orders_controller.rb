@@ -31,7 +31,8 @@ class Admin::OrdersController < ApplicationController
                   notice: t("orders.acept_notice")
     end
   rescue ActiveRecord::RecordInvalid
-    redirect_to @order, alert: t("orders.cannot_accept_notice")
+    redirect_to admin_order_path(status: :confirming),
+                alert: t("orders.cannot_accept_notice")
   end
 
   def handle_cancel_order
@@ -43,7 +44,8 @@ class Admin::OrdersController < ApplicationController
                   notice: t("orders.destroy_notice")
     end
   rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotDestroyed
-    redirect_to @order, alert: t("orders.cannot_destroy_notice")
+    redirect_to admin_order_path(status: :confirming),
+                alert: t("orders.cannot_destroy_notice")
   end
 
   def process_success_order_items
