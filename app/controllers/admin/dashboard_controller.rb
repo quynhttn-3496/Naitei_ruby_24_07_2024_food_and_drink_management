@@ -1,4 +1,5 @@
 class Admin::DashboardController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @total_amount_this_month = Order.succeeded.current_month
                                     .sum :total_invoice_cents
@@ -18,5 +19,10 @@ class Admin::DashboardController < ApplicationController
 
     @monthly_revenue = Order.group_by_month(:created_at)
                             .sum(:total_invoice_cents)
+  end
+
+  private
+  def authenticate_admin!
+    authorize! :manage, :admin_page
   end
 end

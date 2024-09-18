@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
   def handle_not_login
     return if current_user
 
-    redirect_to signin_path
+    redirect_to new_user_session_path
   end
 
   def build_order

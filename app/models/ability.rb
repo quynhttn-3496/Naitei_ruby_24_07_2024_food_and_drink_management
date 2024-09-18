@@ -10,6 +10,7 @@ class Ability
     return if user.blank?
 
     can :manage, Review, user_id: user.id
+    can :manage, Cart, user_id: user.id
     cannot :manage, :admin_page
 
     return unless user.admin?

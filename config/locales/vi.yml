@@ -193,9 +193,6 @@ vi:
       acept: "Chấp nhận đơn hàng"
   not_admin: "bạn không có quyền truy cập"
   not_signed: "bạn cần đăng nhập"
-  search:
-    search: "Tìm kiếm"
-    placeholder: "Tìm kiếm đồ ăn yêu thích"
   edit: "Sửa"
   update: "Cập nhật"
   sidebar:
@@ -280,6 +277,8 @@ vi:
   create_day: "Ngày tạo"
   date_format: "YYYY-MM-DD"
   search:
+    search: "Tìm kiếm"
+    placeholder: "Tìm kiếm đồ ăn yêu thích"
     placeholders:
       search_cont: "Lý do, trạng thái"
       total_invoice_cents_gteq: "Giá tiền tối thiểu"
