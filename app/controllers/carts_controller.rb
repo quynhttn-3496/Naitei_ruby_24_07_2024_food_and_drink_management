@@ -12,7 +12,7 @@ class CartsController < ApplicationController
         redirect_to products_path
       end
     else
-      redirect_to signin_path
+      redirect_to new_user_session_path
     end
   end
 end

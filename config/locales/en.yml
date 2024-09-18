@@ -192,9 +192,6 @@ en:
       acept: "Accept Order"
   not_admin: "You are not authorized"
   not_signed: "You need to sign in"
-  search:
-    search : "Search"
-    placeholder: "Search for your favorite food"
   edit: "Edit"
   update: "Update"
   sidebar:
@@ -280,6 +277,8 @@ en:
   create_day: "Creation date"
   date_format: "YYYY-MM-DD"
   search:
+    search : "Search"
+    placeholder: "Search for your favorite food"
     placeholders:
       search_cont: "Reason, status"
       total_invoice_cents_gteq: "Minimum price"
