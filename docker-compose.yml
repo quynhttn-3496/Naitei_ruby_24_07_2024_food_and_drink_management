@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+volumes:
+  db_data:
