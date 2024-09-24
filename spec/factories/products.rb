@@ -5,5 +5,6 @@ FactoryBot.define do
     quantity_in_stock { 10 }
     association :category
     currency { "USD" }
+    delivery_quantity { 0 }
   end
 end

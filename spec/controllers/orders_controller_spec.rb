@@ -14,6 +14,8 @@ RSpec.describe Admin::OrdersController, type: :controller do
   let!(:order) { create(:order, status: :confirming) }
   let(:admin) { create(:user, role: 0) }
   let(:mock_pagy) { instance_double("Pagy") }
+  let(:category) {create(:category)}
+  let(:product) { create(:product, category: category) }
 
   before do
     sign_in admin
@@ -21,6 +23,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
 
   describe "GET #index" do
     before do
+      puts product.inspect
       allow(controller).to receive(:pagy).and_return([mock_pagy, Order.all])
       get :index
     end
@@ -45,6 +48,13 @@ RSpec.describe Admin::OrdersController, type: :controller do
       it "processes the order items and updates the order status to succeeded" do
         order.reload
         expect(order.succeeded?).to be_truthy
+      end
+
+      it "updates the product delivery quantity correctly" do
+        order.reload
+        order.order_items.each do |order_item|
+          expect(order_item.product.delivery_quantity).to eq(order_item.quantity)
+        end
       end
 
       it "sets a flash success message" do
@@ -90,6 +100,13 @@ RSpec.describe Admin::OrdersController, type: :controller do
         expect(order.confirming?).to be_truthy
       end
 
+      it "does not update the product delivery quantity" do
+        order.reload
+        order.order_items.each do |order_item|
+          expect(order_item.product.delivery_quantity).not_to eq(order_item.quantity)
+        end
+      end
+      
       it "sets a flash alert message" do
         expect(flash[:alert]).to eq(I18n.t("orders.cannot_accept_notice"))
       end
@@ -100,3 +117,4 @@ RSpec.describe Admin::OrdersController, type: :controller do
     end
   end
 end
+
