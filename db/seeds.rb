@@ -1,75 +1,45 @@
+# Định nghĩa client Elasticsearch
+ElasticsearchClient = Elasticsearch::Client.new(
+  url: 'http://elasticsearch:9200',
+  log: true,
+  user: 'elastic',
+  password: '123456'
+)
+
+# Tạo danh mục và gửi vào Elasticsearch
 categories = ["com", "tra sua", "tra da", "my", "pho"]
 categories.each do |category_name|
-  Category.create(name: category_name)
+  category = Category.create(name: category_name)
+  
+  # Gửi dữ liệu vào Elasticsearch
+  ElasticsearchClient.index(index: 'categories', id: category.id, body: { name: category_name })
 end
-2.times do |i|
-  user = User.create!(
-    email: "admin#{i + 1}@example.com",
-    username: "admin#{i + 1}",
-    password: "123456",
-    role: 0
-  )
-  user.create_cart!
-end
-18.times do |i|
-  user = User.create!(
-    email: "user#{i + 1}@example.com",
-    username: "user#{i + 1}",
-    password: "123456",
-    role: 1
-  )
-  user.create_cart!
-end
-50.times do |i|
+
+# Tạo sản phẩm và gửi vào Elasticsearch
+5.times do |i|
   category = Category.order("RAND()").first
-  Product.create!(
-    name: "Product #{i + 1}",
+  product = Product.create!(
+    name: "Product #{i + 1}", # Sửa ở đây
     price: Money.new(rand(100000..1000000), "VND"),
     delivery_quantity: rand(1..10),
-    description: "Description for product #{i + 1}",
+    description: "Description for product",
     quantity_in_stock: rand(1..50),
     category: category
   )
+
+  
+  # # Gửi dữ liệu sản phẩm vào Elasticsearch
+  ElasticsearchClient.index(index: 'products', id: product.id, body: { 
+    name: product.name,
+    price_cents: product.price_cents,
+    currency: "VND",
+    delivery_quantity: product.delivery_quantity,
+    description: product.description,
+    quantity_in_stock: product.quantity_in_stock,
+    currency: product.price.currency,
+    category: category.id # Cập nhật category thành category.id
+  })
 end
-payment_methods = ["bank_transfer","credit_card", "paypal"]
-payment_methods.each do |method|
-  PaymentMethod.create!(payment_method: method)
-end
-User.all.each do |user|
-  2.times do
-    Address.create!(
-      user: user,
-      name: Faker::Name.name,
-      address: Faker::Address.full_address,
-      phone: Faker::PhoneNumber.cell_phone
-    )
-  end
-end
-20.times do
-  user = User.order("RAND()").first
-  payment_method = PaymentMethod.order("RAND()").first
-  address = user.addresses.order("RAND()").first  
-  status = rand(0..3)
-  reason = status == 0 ? "Reason for failed order #{rand(1..100)}" : nil  
-  order = Order.create!(
-    user: user,
-    status: rand(0..3),
-    reason: reason,
-    payment_method: payment_method,
-    address: address,
-    total_invoice: 0
-    )  
-    total_invoice = 0
-  3.times do
-    product = Product.order("RAND()").first
-    quantity = rand(1..5)
-    total_amount = product.price * quantity    
-    OrderItem.create!(
-      order: order,
-      product: product,
-      quantity: quantity,
-      total_amount: Money.new(rand(100000..1000000), "USD"),
-    )  
-  end
-  order.update(total_invoice: Money.new(rand(100000..1000000), "USD"))
-end
+
+
+

@@ -1,4 +1,36 @@
 class Product < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  settings do
+    mappings dynamic: false do
+      indexes :name, type: :text, analyzer: 'standard'
+      indexes :description, type: :text, analyzer: 'standard'
+      indexes :price_cents, type: :integer
+      indexes :category_id, type: :integer
+    end
+  end
+
+  # Customize how to index the data into Elasticsearch
+  def as_indexed_json(_options = {})
+    as_json(only: [:name, :description, :price_cents, :category_id])
+  end
+
+  Product.__elasticsearch__.create_index!
+  Product.import
+
+  def self.search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          match: {
+            "description": query
+          }
+        }
+      }
+    )
+  end
+
   PRODUCT_PARAMS = [:name, :description,
   :quantity_in_stock, :price_cents, :currency, :category_id, {images: []}]
                    .freeze

@@ -1,23 +1,41 @@
 services:
   db:
-    image: mysql:5.7
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: <%= ENV['DATABASE_PASSWORD'] %>
     volumes:
       - db_data:/var/lib/mysql
     ports:
       - "3307:3306"
-
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0"
     volumes:
-      - .:/app
+      - .:/myapp
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
       RAILS_ENV: development
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    restart: always
+    environment:
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=123456
+      - ELASTICSEARCH_PORT_NUMBER=9200
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - xpack.security.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - .:/myapp
 volumes:
   db_data:

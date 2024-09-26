@@ -1,7 +1,6 @@
 <% provide :title, t("products.title") %>
 <h1 class="text-3xl font-bold mb-4"><%= t "products.title" %></h1>
 <div class="mb-4">
-  <%== pagy_nav(@pagy) %>
 </div>
 
 <h2 class="text-xl font-bold mb-4 text-gray-800"><%= t("products.filter_cate") %></h2>
@@ -27,5 +26,22 @@
   <%= render partial: "product", collection: @products %>
 </div>
 <div class="mt-4 flex justify-center items-center">
-  <%== pagy_nav(@pagy) %>
 </div>
+
+
+
+<!-- app/views/products/index.html.erb -->
+<%= form_with url: products_path, method: :get, local: true do |form| %>
+  <%= form.label :query, "Tìm kiếm sản phẩm" %>
+  <%= form.text_field :query, value: params[:query] %>
+  <%= form.submit "Tìm kiếm" %>
+<% end %>
+
+<h2>Kết quả tìm kiếm:</h2>
+<% @products.each do |product| %>
+  <div>
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <p>Giá: <%= product.price.format %></p>
+  </div>
+<% end %>
